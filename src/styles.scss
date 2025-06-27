@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=inter:wght@300..900&display=swap");
+
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 @import "flowbite/src/themes/default";
@@ -6,6 +9,43 @@
 
 @theme {
   --color-main-color: rgba(53, 175, 160, 1);
+  --color-stock-color: #00b853;
+
+  --color-addbtn-color: #ffcd00;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+  }
+
+  .secondry-font {
+    font-style: "Dosis", sans-serif;
+    font-family: "Dosis", sans-serif;
+  }
+
+  .btn-primary {
+    width: 100%;
+    cursor: pointer;
+    border-radius: calc(infinity * 1px);
+    background-color: var(--color-addbtn-color);
+
+    font-weight: var(--font-weight-normal);
+    color: var(--color-black);
+    box-shadow: var(--shadow-md);
+    transition: background-color 0.3s ease-in-out;
+    text-transform: capitalize;
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-yellow-500);
+      }
+    }
+  }
+}
+
+* {
+  // font-family: "Dosis", sans-serif;
+  font-family: "Inter", "Dosis", sans-serif;
 }
 
 .dosis-font {
