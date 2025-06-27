@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AddbuttonComponent } from './shared/components/ui/addbutton/addbutton.component';
 import { SliderComponent } from './shared/components/ui/slider/slider.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +15,6 @@ import { SliderComponent } from './shared/components/ui/slider/slider.component'
     HomeComponent,
     FooterComponent,
   ],
-=======
-import { FooterComponent } from "./layout/footer/footer.component";
-
-@Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, FooterComponent],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
