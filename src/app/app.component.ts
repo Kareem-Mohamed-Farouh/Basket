@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AddbuttonComponent } from './shared/components/ui/addbutton/addbutton.component';
 import { SliderComponent } from './shared/components/ui/slider/slider.component';
-import { FooterComponent } from './layout/footer/footer.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { FooterComponent } from './layout/footer/footer.component';
     AddbuttonComponent,
     HomeComponent,
     FooterComponent,
+    NotfoundComponent,
   ],
 
   templateUrl: './app.component.html',
