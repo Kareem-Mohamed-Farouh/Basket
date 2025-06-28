@@ -1,12 +1,13 @@
 import { isPlatformBrowser } from '@angular/common';
 import { HttpInterceptorFn } from '@angular/common/http';
-import { PLATFORM_ID } from '@angular/core';
+import { inject, PLATFORM_ID } from '@angular/core';
 
 export const headerInterceptor: HttpInterceptorFn = (req, next) => {
  
+  let platform = inject(PLATFORM_ID);
 
  
-if (isPlatformBrowser(PLATFORM_ID)) {
+if (isPlatformBrowser(platform)) {
   if (localStorage.getItem('token')) {
    let userHeader:any = {token:localStorage.getItem('token')}
 
