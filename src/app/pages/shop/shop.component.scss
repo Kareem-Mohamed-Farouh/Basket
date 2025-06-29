@@ -24,9 +24,11 @@ td {
 }
 
 .content {
-  top: 38%;
-  left: 51%;
-  transform: translate(-50%, -50%);
+position: absolute;
+right: 20%;
+top: 150px;
+
+transform: translate(-50%, -50%);
 }
 
 .content h3 {
@@ -57,6 +59,8 @@ td {
   font-size: 13px;
 }
 
+
+
 .card-body h3 {
   color: rgb(32, 36, 53);
   font-size: 14px;
@@ -84,7 +88,7 @@ td {
   border-radius: 0 50% 50% 0;
 }
 .price{
-  background-color: rgba(155, 155, 180, 1) ;
+  background-color:  rgba(247, 248, 253, 1) ;
 }
 
 
