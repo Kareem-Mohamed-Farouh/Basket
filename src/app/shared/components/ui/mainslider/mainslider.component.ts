@@ -5,9 +5,44 @@ import {
   HostListener,
   inject,
   PLATFORM_ID,
+  signal,
+  WritableSignal,
 } from '@angular/core';
 import { SwiperOptions } from 'swiper/types';
+import { HomeService } from '../../../../core/services/homeSer/home.service';
+interface IProduct {
+  sold: number;
+  images: string[];
+  subcategory: Subcategory[];
+  ratingsQuantity: number;
+  _id: string;
+  title: string;
+  slug: string;
+  description: string;
+  quantity: number;
+  price: number;
+  imageCover: string;
+  category: Category;
+  brand: Category;
+  ratingsAverage: number;
+  createdAt: string;
+  updatedAt: string;
+  id: string;
+}
 
+interface Category {
+  _id: string;
+  name: string;
+  slug: string;
+  image: string;
+}
+
+interface Subcategory {
+  _id: string;
+  name: string;
+  slug: string;
+  category: string;
+}
 @Component({
   selector: 'app-mainslider',
   imports: [],
@@ -16,27 +51,41 @@ import { SwiperOptions } from 'swiper/types';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class MainsliderComponent {
-  slidesPerView: number = 5;
-  screenWidth!: number;
-
+  slidesPerView: WritableSignal<number> = signal(5);
+  screenWidth: WritableSignal<number> = signal(window.innerWidth);
+  productData: WritableSignal<IProduct[]> = signal<IProduct[]>([]);
+  private readonly homeService = inject(HomeService);
   private readonly pLATFORM_ID = inject(PLATFORM_ID);
   ngOnInit() {
+    this.getHomeProduct();
+    // Initialize screen width for browser platform
+    // This check is necessary to avoid errors during server-side rendering
     if (isPlatformBrowser(this.pLATFORM_ID)) {
       this.getScreenWidth();
     }
   }
 
+  getHomeProduct(): void {
+    this.homeService.getAllProducts().subscribe({
+      next: (res) => {
+        console.log(res.data);
+        this.productData.set(res.data);
+      },
+    });
+  }
+
   @HostListener('window:resize')
   getScreenWidth() {
-    this.screenWidth = window.innerWidth;
-    if (this.screenWidth >= 120 && this.screenWidth <= 480) {
-      this.slidesPerView = 1;
-    } else if (this.screenWidth >= 480 && this.screenWidth <= 602) {
-      this.slidesPerView = 2;
-    } else if (this.screenWidth >= 602 && this.screenWidth <= 992) {
-      this.slidesPerView = 3;
-    } else if (this.screenWidth >= 992 && this.screenWidth <= 1200) {
-      this.slidesPerView = 5;
+    this.screenWidth.set(window.innerWidth);
+    const width = this.screenWidth();
+    if (width >= 120 && width <= 480) {
+      this.slidesPerView.set(1);
+    } else if (width > 480 && width <= 602) {
+      this.slidesPerView.set(2);
+    } else if (width > 602 && width <= 992) {
+      this.slidesPerView.set(3);
+    } else if (width > 992 && width <= 1200) {
+      this.slidesPerView.set(5);
     }
   }
 }
