@@ -1,3 +1,4 @@
+import { NavbarComponent } from './layout/navbar/navbar.component';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -6,17 +7,20 @@ import { HomeComponent } from './pages/home/home.component';
 import { AddbuttonComponent } from './shared/components/ui/addbutton/addbutton.component';
 import { SliderComponent } from './shared/components/ui/slider/slider.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { ShopComponent } from "./pages/shop/shop.component";
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
+    NavbarComponent,
     SliderComponent,
     AddbuttonComponent,
     HomeComponent,
     FooterComponent,
     NotfoundComponent,
-  ],
+    ShopComponent
+],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
