@@ -1,0 +1,112 @@
+.header p {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 18px;
+  color: rgb(62, 68, 90);
+}
+
+.header p span {
+  color: rgb(155, 155, 180);
+}
+
+input {
+  border: 1px solid rgb(113, 119, 142);
+  padding: 1px 1px;
+}
+
+td {
+  color: rgb(113, 119, 142);
+  padding: 5px 0;
+}
+
+.head {
+  color: #000;
+}
+
+.content {
+  top: 38%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+}
+
+.content h3 {
+  font-size: 24px;
+  font-weight: 200;
+  color: rgb(32, 36, 53);
+}
+
+.content h2 {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(32, 36, 53);
+}
+
+.content h2 span {
+  color: rgb(0, 184, 83);
+}
+
+.content p {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(155, 155, 180);
+}
+
+.starts span {
+  color: rgb(155, 155, 180);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.card-body h3 {
+  color: rgb(32, 36, 53);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.6px;
+}
+
+.card-body h4 {
+  font-weight: 600;
+  font-size: 11px;
+  color: rgb(0, 184, 83);
+}
+
+.salary {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(213, 18, 67);
+}
+
+.bttom .btn1 {
+  border-radius: 50% 0 0 50%;
+}
+
+.bttom .btn2 {
+  border-radius: 0 50% 50% 0;
+}
+.price{
+  background-color: rgba(155, 155, 180, 1) ;
+}
+
+
+.price h5{
+  color: rgba(155, 155, 180, 1) !important;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+
+.price p{
+  color: rgba(155, 155, 180, 1) !important;
+  font-size: 12px; 
+  font-weight: 500;
+}
+
+.price p span{
+  color: rgba(32, 36, 53, 1) !important;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+
+
+
