@@ -140,14 +140,15 @@
      <div class="grid grid-cols-4 gap-3 ml-6"> 
       @for (PRO of products(); track PRO.id) {
           <div
-        class="text-white card p-4 rounded-md overflow-hidden shadow  relative"
+        class="text-white card p-4 rounded-md overflow-hidden shadow  relative" 
       >
-        <div>
-          <div class="card-img">
+        <div   >
+          <div (click)="showProductDetails( PRO.id  )"  class="card-img">
             <img
               [src]="PRO.imageCover"
+            
               class="w-full object-contain"
-              [alt]="PRO.description"
+              [alt]="PRO.description" data-modal-target="default-modal" data-modal-toggle="default-modal"
             />
           </div>
           <div class="card-body px-2">
@@ -191,3 +192,125 @@
     </div> 
   </div>
 </div>
+
+
+
+
+
+
+<section class="datelis grid md:grid-cols-4  ">
+  
+
+
+
+<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden  fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] ">
+    <div class="relative  max-w-screen-xl max-h-full ">
+        
+        <div class="relative bg-white rounded-lg shadow-sm ">
+            <div class="flex items-center justify-between   rounded-t d">
+                <button  type="button"  class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-hide="default-modal" >
+                  
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+        
+            
+                 <div class=" flex gap-8   ">
+                  <div class="picture ">
+                               @for (date of detailsProduct?.images; track $index) {
+            
+                <div class="w-20 h-20 overflow-hidden gap-3 flex-col  rounded cursor-pointer hover:scale-105 transition ">
+                  <img class="object-cover flex-col  " [src]="date" [alt]="detailsProduct?.title">
+
+                </div>
+              }
+
+                  </div>
+
+        
+
+              <div class="flex ">
+                              @if (detailsProduct) {
+                                <div class="middle    ">
+                  <img [src]="detailsProduct.imageCover" class=" "  [alt]="detailsProduct.title">
+                </div>
+              }
+
+             @if (detailsProduct) {
+                 <div class="stop ml-6 justify-start">
+                  <h2>{{detailsProduct.title}}</h2>
+                  <p>{{detailsProduct.price}}</p>
+                  <div class="role ">
+                    <span class="capitalize">available in:</span>
+                    <div class="pt-3 ">
+                       <ul class="flex gap-3">
+                      <li>
+                        <a class="btn text-[#000] "> Small</a>
+                      </li>
+                      <li>
+                        <a class="btn"> Medium</a>
+                      </li>
+                      <li>
+                        <a class="btn"> Large</a>
+                      </li>
+                    </ul>
+                    
+                    </div>
+
+
+                    
+
+                  </div>
+
+                      <div class="flex w-full bg-[#f3f5f9]   items-center justify-center mt-4  mb-4">
+                   <button class="px-4 py-2 text-3xl">−</button>
+                   <span class="px-4 ">1</span>
+                    <button class="px-4 py-2 text-3xl">+</button>
+                  </div>
+
+                  <button class="bg-teal-500 text-white w-full py-3 rounded flex items-center justify-center space-x-2 mb-4">
+ 
+                   <i class="fa-solid fa-bag-shopping" style="color: #63E6BE;"></i>
+                   <span>Add to Cart</span>
+                  </button>
+
+                  <div class=" share flex space-x-2 mb-4  w-full">
+                  <button class=" border-2 rounded px-16 py-2 flex items-center space-x-1">
+                     <span><i class="fa-solid fa-heart"></i></span><span>Wishlist</span>
+                    </button>
+                  <button class=" border-2 rounded px-16 py-2 flex items-center space-x-1">
+                     <span><i class="fa-solid fa-share"></i></span><span>Share</span>
+                   </button>
+                         </div>
+
+                         <div class="flex flex-wrap items-center space-x-2 mt-2">
+                           <span class="text-gray-500">Tags:</span>
+                              <span class="border px-2 py-1 rounded text-sm">Fast Food</span>
+                            <span class="border px-2 py-1 rounded text-sm">Organic Corn</span>
+                            <span class="border px-2 py-1 rounded text-sm">Flavoured</span>
+                             <span class="border px-2 py-1 rounded text-sm">Dry Food</span>
+                            </div>
+
+                            <div class="footer my-4">
+                              <h4>Product Details:</h4>
+                              <p>{{detailsProduct.description}} <span>Read More</span></p>
+                            </div>
+                </div>
+             }
+
+              </div>
+
+
+
+            </div>
+           
+         
+
+        </div>
+    </div>
+</div>
+
+</section>
