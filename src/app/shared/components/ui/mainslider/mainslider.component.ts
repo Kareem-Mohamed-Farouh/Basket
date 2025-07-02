@@ -52,15 +52,19 @@ interface Subcategory {
 })
 export class MainsliderComponent {
   slidesPerView: WritableSignal<number> = signal(5);
-  screenWidth: WritableSignal<number> = signal(window.innerWidth);
+  screenWidth: WritableSignal<number> = signal(0);
   productData: WritableSignal<IProduct[]> = signal<IProduct[]>([]);
+   isBrowser: WritableSignal<boolean> = signal(false);
   private readonly homeService = inject(HomeService);
-  private readonly pLATFORM_ID = inject(PLATFORM_ID);
+  private readonly platform = inject(PLATFORM_ID);
+
   ngOnInit() {
     this.getHomeProduct();
     // Initialize screen width for browser platform
     // This check is necessary to avoid errors during server-side rendering
-    if (isPlatformBrowser(this.pLATFORM_ID)) {
+    if (isPlatformBrowser(this.platform)) {
+      this.isBrowser.set(true)
+      this.screenWidth.set(window.innerWidth)
       this.getScreenWidth();
     }
   }

@@ -52,3 +52,55 @@
   font-family: 'Dosis', sans-serif;
   font-weight: 600;
 }
+
+
+/* === Notyf - Dark Style === */
+
+.notyf {
+  z-index: 99999; // عشان يطلع فوق كل حاجة
+}
+
+.notyf__toast {
+  background: #1e1e2f !important;
+  color: #f4f4f5;
+  border-radius: 14px !important;
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  animation: slideFadeIn 0.4s ease forwards;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.notyf__toast--success {
+  background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+  color: #fff;
+}
+
+.notyf__toast--error {
+  background: linear-gradient(135deg, #ef4444, #b91c1c) !important;
+  color: #fff;
+}
+
+.notyf__icon {
+  font-size: 20px;
+}
+
+.notyf__message {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* === Animation === */
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
