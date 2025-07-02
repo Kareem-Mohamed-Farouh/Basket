@@ -8,6 +8,8 @@ import { AddbuttonComponent } from './shared/components/ui/addbutton/addbutton.c
 import { SliderComponent } from './shared/components/ui/slider/slider.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ShopComponent } from "./pages/shop/shop.component";
+import { RegisterComponent } from "./pages/register/register.component";
+import { AboutUsComponent } from "./pages/about-us/about-us.component";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +21,9 @@ import { ShopComponent } from "./pages/shop/shop.component";
     HomeComponent,
     FooterComponent,
     NotfoundComponent,
-    ShopComponent
+    ShopComponent,
+    RegisterComponent,
+    AboutUsComponent
 ],
 
   templateUrl: './app.component.html',

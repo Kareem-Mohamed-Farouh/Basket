@@ -54,8 +54,10 @@ export class MainsliderComponent {
   slidesPerView: WritableSignal<number> = signal(5);
   screenWidth: WritableSignal<number> = signal(0);
   productData: WritableSignal<IProduct[]> = signal<IProduct[]>([]);
+  isBrowser: WritableSignal<boolean> = signal(false);
   private readonly homeService = inject(HomeService);
   private readonly pLATFORM_ID = inject(PLATFORM_ID);
+
   ngOnInit() {
     this.getHomeProduct();
     // Initialize screen width for browser platform

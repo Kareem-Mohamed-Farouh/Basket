@@ -17,8 +17,8 @@ export class HomeService {
   }
 
   // لعرض منتج  واحد
-  getSpecProduct(pid:string):Observable<any> {
-    return this.http.get(`${baseUrl}/api/v1/products/${pid}`);
+  getSpecProduct(id:string|null):Observable<any> {
+    return this.http.get(`${baseUrl}/api/v1/products/${id}`);
   }
 
 
