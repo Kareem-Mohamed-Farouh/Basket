@@ -2,6 +2,8 @@
   [slidesPerView]="slidesPerView()"
   speed="500"
   loop="true"
+  autoplay="true"
+  spaceBetween="2"
   mousewheel="true"
   style="
     --swiper-navigation-color: #000000;
@@ -11,11 +13,13 @@
   navigation="true"
   class="xl:mx-[20rem] mx-4 my-5"
 >
-  @for (product of productData(); track $index) {
-
+  @for (product of productData().slice(15, 30); track $index) { @if($index % 2
+  === 0) {
   <swiper-slide>
-    <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
-      <div class="card-img-top relative">
+    <div
+      class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-100 border border-gray-100"
+    >
+      <div class="card-img-top relative cursor-pointer">
         <img
           [src]="product.imageCover"
           class="w-full h-auto object-cover"
@@ -61,7 +65,8 @@
       </div>
     </div>
   </swiper-slide>
-  }
+
+  } }
   <!-- <swiper-slide>
     <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
       <div class="card-img-top relative">
