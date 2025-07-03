@@ -1,5 +1,5 @@
 @if (isBrowser()) {
-  <swiper-container
+<swiper-container
   [slidesPerView]="slidesPerView()"
   speed="500"
   loop="true"
@@ -23,7 +23,7 @@
       <div class="card-img-top relative cursor-pointer">
         <img
           [src]="product.imageCover"
-          class="w-full h-auto object-cover"
+          class="w-full h-[13.75rem] object-contain"
           [alt]="product.title"
         />
         <span
