@@ -1,1 +1,93 @@
-<p>blog works!</p>
+
+<div class="grid grid-cols-1 lg:grid-cols-4 w-[90%]  lg:w-[70%] mx-auto ">
+
+<div class=" col-span-3   py-10  ">
+   @for (product of productData(); track $index) {
+     <div class="w-[90%] py-6 ">
+   <div class=" border"> <img class="object-fit w-full " [src]="product.imageCover" [alt]="product.title"></div>
+    <p class="text-gray-600 py-4">{{product.brand.name}}</p>
+    <h2 class="text-[36px] font-semibold">{{product.title}}</h2>
+    <p class="text-gray-600 py-4">{{product.createdAt | date }}</p>
+    <p class="text-gray-600">{{product.description}}</p>
+</div>
+   }
+
+   <div class="flex gap-4 py-6 items-center justify-center font-bold text-xl  w-[70%] ">
+    <p  [class]="selectedPage() === 1  ? 'bg-teal-500 text-white px-4 py-1 rounded-full'  : '' " (click)="get2Products(1)" class="cursor-pointer  ">1</p>
+    <p [class]="selectedPage() === 2  ? 'bg-teal-500 text-white px-4 py-1 rounded-full'  : '' " class="cursor-pointer" (click)="get2Products(2)">2</p>
+    <i (click)="goToPage()" class="fa-solid fa-chevron-right cursor-pointer"></i>
+   </div>
+</div>
+
+
+<div >
+
+    <div class="py-10">
+        <p class="font-semibold">Recent Posts</p>
+        <div class="border border-gray-400 px-1 my-4">
+            <div class="flex gap-2 items-center py-4 relative">
+                <img class="w-[60px] h-[60px] object-cover rounded-full" src="/imgs/blog-3.jpg.png" alt="">
+                <p>But I must explain toyou how all thismistaken idea</p>
+                 <p class=" absolute left-11 top-3 w-[20px] h-[20px] bg-teal-500 rounded-full text-white flex justify-center items-center font-semibold border border-white">1</p>
+            </div>
+            <div class="flex gap-2 items-center py-4 relative">
+                <img class="w-[60px] h-[60px] object-cover rounded-full" src="/imgs/blog-5.jpg.png" alt="">
+                <p>The Problem WithTypefaces on the Web</p>
+                 <p class=" absolute left-11 top-3 w-[20px] h-[20px] bg-teal-500 rounded-full text-white flex justify-center items-center font-semibold border border-white">2</p>
+            </div>
+            <div class="flex gap-2 items-center py-4 relative">
+                <img class="w-[60px] h-[60px] object-cover rounded-full" src="/imgs/blog-1.jpg.png" alt="">
+                <p>English Breakfast TeaWith Tasty DonutDesserts</p>
+                <p class=" absolute left-11 top-3 w-[20px] h-[20px] bg-teal-500 rounded-full text-white flex justify-center items-center font-semibold border border-white">3</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-10">
+        <p class="py-4 font-semibold">social media </p>
+        <div class="flex gap-x-8 items-center text-xl bg-[#3B5998] rounded px-4 py-1 mb-1">
+          <i class="fa-brands fa-facebook-f text-white"></i>
+            <p class="text-white font-semibold">facebook</p>
+        </div>
+        <div class="flex gap-x-8 items-center text-xl bg-[#CC2366] rounded px-4 py-1 mb-1">
+          <i class="fa-brands fa-instagram text-white"></i>
+            <p class="text-white font-semibold">instagram</p>
+        </div>
+        <div class="flex gap-x-8 items-center text-xl bg-[#1DA1F2] rounded px-4 py-1 mb-1">
+          <i class="fa-brands fa-twitter text-white"></i>
+            <p class="text-white font-semibold">twitter</p>
+        </div>
+        <div class="flex gap-x-8 items-center text-xl bg-[#FF4500] rounded px-4 py-1 mb-1">
+          <i class="fa-brands fa-reddit-alien text-white"></i>
+            <p class="text-white font-semibold">reddit</p>
+        </div>
+        <div class="flex gap-x-8 items-center text-xl bg-[#E60023] rounded px-4 py-1">
+          <i class="fa-brands fa-pinterest-p text-white"></i>
+            <p class="text-white font-semibold">pinterest</p>
+        </div>
+
+      
+    </div>
+
+    <div class="py-10">
+         <p class="py-4 font-semibold">Widget Banner </p>
+         <img src="/imgs/sidebar-banner.gif.png" alt="">
+    </div>
+
+    <div class="py-10">
+        <p class="py-4 font-semibold">tags</p>
+        <div class="grid grid-cols-3 gap-1">
+            <p class="border border-gray-400 text-center">ecommerce</p>
+            <p class="border border-gray-400 text-center">food</p>
+            <p class="border border-gray-400 text-center">grocery</p>
+            <p class="border border-gray-400 text-center">klbtheme</p>
+            <p class="border border-gray-400 text-center">organic</p>
+            <p class="border border-gray-400 text-center">shop</p>
+            <p class="border border-gray-400 text-center">shopify</p>
+            <p class="border border-gray-400 text-center">store</p>
+        </div>
+    </div>
+
+</div>
+
+</div>
