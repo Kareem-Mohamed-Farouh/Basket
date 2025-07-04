@@ -2,6 +2,9 @@ import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core
 import { HomeService } from '../../core/services/homeSer/home.service';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { CartService } from '../../core/services/cartSer/cart.service';
+import { ICart } from '../../shared/interfaces/icart';
+import { NotyfService } from '../../core/services/notyfSer/notyf.service';
 
 @Component({
   selector: 'app-shop',
@@ -11,12 +14,15 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 })
 export class ShopComponent implements OnInit {
   private readonly productsService = inject(HomeService)
-  private readonly activatedRoute= inject(ActivatedRoute);
+  private readonly cartService=inject(CartService)
+
     detailsProduct:IProduct|null=null ;
 
   showModal :WritableSignal<IProduct[]>=signal ([]);
   
    products:WritableSignal<IProduct[]>=signal ([])
+     CartDetalis:ICart={} as ICart
+   
 
 
 
@@ -53,6 +59,23 @@ export class ShopComponent implements OnInit {
       
     })
   }
+
+
+
+addcart(pid: string): void {
+  this.cartService.addToCart(pid).subscribe({
+    next: (res) => {
+      console.log(res);
+      this.cartService.cartNumber.set(res.numOfCartItems);
+      // this.notyf.success('Product added to cart!');
+    },
+    error: (err) => {
+      console.error(err);
+      // this.notyf.error(err.error.message || 'Failed to add product to cart');
+    }
+  });
+}
+
 
 
 

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { baseUrl } from '../../../shared/environments/baseUrl';
 
@@ -10,11 +10,13 @@ export class CartService {
 
   constructor(private http:HttpClient) { }
 
+  cartNumber:WritableSignal<number>=signal(0)
+
 
   // لاضافة منتج إلى السلة
   addToCart(pid: string):Observable<any>
    {
-    return this.http.post(`${baseUrl}/api/v1/cart`, { productId: pid });
+    return this.http.post(`${baseUrl}/api/v1/cart`, { 'productId': pid });
   }
 
 
