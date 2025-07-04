@@ -5,7 +5,6 @@
 @import "tailwindcss";
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
-@source "../node_modules/flowbite";
 
 @theme {
   --color-main-color: rgba(53, 175, 160, 1);
@@ -49,18 +48,18 @@
 }
 
 .dosis-font {
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
   font-weight: 600;
 }
-
 
 /* === Notyf - Dark Style === */
 
 .notyf {
-  z-index: 99999; // عشان يطلع فوق كل حاجة
+  z-index: 99999;
 }
 
 .notyf__toast {
+  position: relative;
   background: #1e1e2f !important;
   color: #f4f4f5;
   border-radius: 14px !important;
@@ -72,6 +71,33 @@
   align-items: center;
   gap: 12px;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.notyf__toast::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 16px;
+  background: conic-gradient(
+    #35afa0 0deg,
+    transparent 90deg,
+    #35afa0 180deg,
+    transparent 270deg,
+    #35afa0 360deg
+  );
+  animation: rotateBorder 2s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  padding: 2px;
+  box-sizing: border-box;
 }
 
 .notyf__toast--success {
@@ -93,7 +119,7 @@
   font-weight: 500;
 }
 
-/* === Animation === */
+/* === Animations === */
 @keyframes slideFadeIn {
   0% {
     opacity: 0;
@@ -102,5 +128,14 @@
   100% {
     opacity: 1;
     transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0turn);
+  }
+  100% {
+    transform: rotate(1turn);
   }
 }

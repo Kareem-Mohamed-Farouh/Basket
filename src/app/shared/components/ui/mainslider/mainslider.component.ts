@@ -1,15 +1,18 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   HostListener,
   inject,
+  OnInit,
   PLATFORM_ID,
   signal,
   WritableSignal,
 } from '@angular/core';
-import { SwiperOptions } from 'swiper/types';
+
 import { HomeService } from '../../../../core/services/homeSer/home.service';
+import { AddbuttonComponent } from '../addbutton/addbutton.component';
 interface IProduct {
   sold: number;
   images: string[];
@@ -45,23 +48,21 @@ interface Subcategory {
 }
 @Component({
   selector: 'app-mainslider',
-  imports: [],
+  imports: [AddbuttonComponent],
   templateUrl: './mainslider.component.html',
   styleUrl: './mainslider.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class MainsliderComponent {
+export class MainsliderComponent implements OnInit, AfterViewInit {
   slidesPerView: WritableSignal<number> = signal(5);
+  isBrowser: WritableSignal<boolean> = signal(false);
   screenWidth: WritableSignal<number> = signal(0);
   productData: WritableSignal<IProduct[]> = signal<IProduct[]>([]);
-  isBrowser: WritableSignal<boolean> = signal(false);
   private readonly homeService = inject(HomeService);
   private readonly pLATFORM_ID = inject(PLATFORM_ID);
 
   ngOnInit() {
     this.getHomeProduct();
-    // Initialize screen width for browser platform
-    // This check is necessary to avoid errors during server-side rendering
   }
 
   getHomeProduct(): void {
@@ -75,9 +76,11 @@ export class MainsliderComponent {
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.pLATFORM_ID)) {
+      this.isBrowser.set(true)
       this.getScreenWidth();
     }
   }
+
   @HostListener('window:resize')
   getScreenWidth() {
     if (isPlatformBrowser(this.pLATFORM_ID)) {

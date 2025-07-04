@@ -1,6 +1,7 @@
 import { CartService } from './../../core/services/cartSer/cart.service';
 import { Component, computed, inject, OnInit, Signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { SearchService } from '../../core/services/searchSer/search.service';
 
 @Component({
   selector: 'app-navbar',
@@ -23,4 +24,10 @@ export class NavbarComponent implements OnInit {
      })
   }
 
+    constructor(private searchService: SearchService) {}
+
+ onSearchChange(event: Event) {
+  const value = (event.target as HTMLInputElement).value;
+  this.searchService.updateSearchTerm(value);
+}
 }

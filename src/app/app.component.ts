@@ -10,7 +10,6 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ShopComponent } from "./pages/shop/shop.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { AboutUsComponent } from "./pages/about-us/about-us.component";
-import { CartComponent } from "./pages/cart/cart.component";
 
 @Component({
   selector: 'app-root',
@@ -24,8 +23,7 @@ import { CartComponent } from "./pages/cart/cart.component";
     NotfoundComponent,
     ShopComponent,
     RegisterComponent,
-    AboutUsComponent,
-    CartComponent
+    AboutUsComponent
 ],
 
   templateUrl: './app.component.html',

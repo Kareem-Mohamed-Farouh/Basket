@@ -15,13 +15,17 @@ export class HomeService {
   getAllProducts():Observable<any> {
     return this.http.get(`${baseUrl}/api/v1/products`);
   }
+ 
 
   // لعرض منتج  واحد
   getSpecProduct(id:string|null):Observable<any> {
     return this.http.get(`${baseUrl}/api/v1/products/${id}`);
   }
 
-
+ // لعرض جميع المنتجات لصفحه ال blog
+   getAllProductsBlog( page:number):Observable<any> {
+    return this.http.get(`${baseUrl}/api/v1/products?limit=2&page=${page}`);
+  }
 
 
 
