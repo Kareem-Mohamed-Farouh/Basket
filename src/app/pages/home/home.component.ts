@@ -20,14 +20,21 @@ import { ICategories } from '../../shared/interfaces/icategories';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, MainsliderComponent, SliderComponent],
+  imports: [
+    RouterLink,
+    MainsliderComponent,
+    AddbuttonComponent,
+    SliderComponent,
+    MoreproductComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   productData: WritableSignal<IProduct[]> = signal<IProduct[]>([]);
 
-  categoryData: WritableSignal<ICategory[]> = signal<ICategory[]>([]);
+  allProducts: IProduct[] = [];
+  filteredProducts: IProduct[] = [];
 
   categoryData: WritableSignal<ICategories[]> = signal<ICategories[]>([]);
   private readonly homeService = inject(HomeService);
@@ -37,6 +44,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getHomeProduct();
     this.getCategories();
+    this.searchShard();
   }
 
   getHomeProduct(): void {
@@ -54,6 +62,14 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         this.categoryData.set(res.data);
       },
+    });
+  }
+
+  searchShard() {
+    this.SearchService.searchTerm$.subscribe((term) => {
+      this.filteredProducts = this.allProducts.filter((product) =>
+        product.title.toLowerCase().includes(term.toLowerCase())
+      );
     });
   }
 }
