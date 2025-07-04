@@ -29,14 +29,6 @@ export class AuthenService {
     return this.http.post(`${baseUrl}/api/v1/auth/forgotPasswords`, { email });
   }
 
-    saveUserData():void{
-  if (  localStorage.getItem('userToken') !==null){
-  this.userData=   jwtDecode(  localStorage.getItem('userToken')!);
-  console.log('userData', this.userData.id)
-  }
-  }
-
-  
   //  التحقق من رمز إعادة تعيين كلمة المرور
   verifyResetCode(code: string):Observable<any> {
     return this.http.post(`${baseUrl}/api/v1/auth/verifyResetCode`, { code });
@@ -53,5 +45,12 @@ export class AuthenService {
     return this.http.post(`${baseUrl}/api/v1/users/changeMyPassword`, changeData);
   }
 
+
+  saveUserData():void{
+  if (  localStorage.getItem('token') !==null){
+  this.userData=   jwtDecode(  localStorage.getItem('token')!);
+  console.log('userData', this.userData.id)
+  }
+  }
 
 }

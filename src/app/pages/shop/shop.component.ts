@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core
 import { HomeService } from '../../core/services/homeSer/home.service';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { SearchService } from '../../core/services/searchSer/search.service';
 
 @Component({
   selector: 'app-shop',
@@ -12,12 +13,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 export class ShopComponent implements OnInit {
   private readonly productsService = inject(HomeService)
   private readonly activatedRoute= inject(ActivatedRoute);
-    detailsProduct:IProduct|null=null ;
-
+  private readonly SearchService = inject(SearchService);
+  detailsProduct:IProduct|null=null ;
   showModal :WritableSignal<IProduct[]>=signal ([]);
-  
-   products:WritableSignal<IProduct[]>=signal ([])
-
+  products:WritableSignal<IProduct[]>=signal ([])
+  allProducts: IProduct[] = []
+  filteredProducts: IProduct[] = []
 
 
   ngOnInit(): void {
@@ -51,7 +52,14 @@ export class ShopComponent implements OnInit {
     })
   }
 
+ searchShard(){
+   this.SearchService.searchTerm$.subscribe(term => {
+    this.filteredProducts = this.allProducts.filter(product =>
+      product.title.toLowerCase().includes(term.toLowerCase())
+    );
+  });
 
+}
 
 }
 

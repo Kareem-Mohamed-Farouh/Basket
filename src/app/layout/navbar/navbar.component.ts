@@ -1,7 +1,8 @@
 import { CartService } from './../../core/services/cartSer/cart.service';
-import { Component, computed, inject, OnInit, Signal } from '@angular/core';
+import { Component, computed, inject, OnInit, PLATFORM_ID, Signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SearchService } from '../../core/services/searchSer/search.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -11,20 +12,23 @@ import { SearchService } from '../../core/services/searchSer/search.service';
 })
 export class NavbarComponent implements OnInit {
   private readonly cartService=inject(CartService)
-   countCart:Signal<number> = computed(()=>  
-  this.cartService.cartNumber()
- )
- 
+  private readonly platformID =inject(PLATFORM_ID)
+  countCart:Signal<number> = computed(()=>  
+  this.cartService.cartNumber() )
+  constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformID)) {
+        if (localStorage.getItem('token')) {
           this.cartService.getCartItems().subscribe({
-      next:(res)=>{
+         next:(res)=>{
         this.cartService.cartNumber.set(res.numOfCartItems)
       }
      })
+    }
+    }
+  
   }
-
-    constructor(private searchService: SearchService) {}
 
  onSearchChange(event: Event) {
   const value = (event.target as HTMLInputElement).value;

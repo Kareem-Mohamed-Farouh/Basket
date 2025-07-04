@@ -128,7 +128,7 @@
     </div>
 
      <div class="grid grid-cols-4 gap-3 ml-6"> 
-      @for (PRO of products(); track PRO.id) {
+      @for (PRO of filteredProducts; track PRO.id) {
           <div
         class="text-white card p-4 rounded-md overflow-hidden shadow  relative" 
       >
