@@ -12,48 +12,9 @@ import { HomeService } from '../../core/services/homeSer/home.service';
 import { CategoryService } from '../../core/services/categorySer/category.service';
 import { MoreproductComponent } from '../../shared/components/ui/moreproduct/moreproduct.component';
 import { RouterLink } from '@angular/router';
-interface IProduct {
-  sold: number;
-  images: string[];
-  subcategory: Subcategory[];
-  ratingsQuantity: number;
-  _id: string;
-  title: string;
-  slug: string;
-  description: string;
-  quantity: number;
-  price: number;
-  imageCover: string;
-  category: Category;
-  brand: Category;
-  ratingsAverage: number;
-  createdAt: string;
-  updatedAt: string;
-  id: string;
-}
+import { IProduct } from '../../shared/interfaces/iproduct';
+import { ICategories } from '../../shared/interfaces/icategories';
 
-interface Category {
-  _id: string;
-  name: string;
-  slug: string;
-  image: string;
-}
-
-interface Subcategory {
-  _id: string;
-  name: string;
-  slug: string;
-  category: string;
-}
-
-interface ICategory {
-  _id: string;
-  name: string;
-  slug: string;
-  image: string;
-  createdAt: string;
-  updatedAt: string;
-}
 @Component({
   selector: 'app-home',
   imports: [
@@ -68,7 +29,7 @@ interface ICategory {
 })
 export class HomeComponent implements OnInit {
   productData: WritableSignal<IProduct[]> = signal<IProduct[]>([]);
-  categoryData: WritableSignal<ICategory[]> = signal<ICategory[]>([]);
+  categoryData: WritableSignal<ICategories[]> = signal<ICategories[]>([]);
   private readonly homeService = inject(HomeService);
   private readonly categoryService = inject(CategoryService);
 
