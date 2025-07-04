@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthenService } from '../../core/services/auth/authen.service';
 import { Router, RouterLink } from '@angular/router';
 import { NotyfService } from '../../core/services/notyfSer/notyf.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -16,10 +17,12 @@ export class LoginComponent  {
   private readonly router=inject(Router);
   private notyfSer = inject(NotyfService)
 
-  userName : WritableSignal<string> = signal('');
-  errMessage : WritableSignal<string> = signal('');
+  // userName : WritableSignal<string> = signal('');
+  // errMessage : WritableSignal<string> = signal('');
 
-
+ loading:boolean=false;
+ msgerror:string=""
+ succes:string=""
 
 
   loginForm:FormGroup = new FormGroup({
@@ -28,26 +31,64 @@ export class LoginComponent  {
   })
 
 
-  submitLogin(){
-    if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe({
-        next : (res)=>{
-      if (res.message==='success') {
-         this.userName.set(res.user.name)
-         this.notyfSer.success(`Welcome ${this.userName()}`)
-         this.router.navigate(['/home']);
-       }
-          console.log(res)
-        },
+//   submitFrom():void{
+// if (this.loginForm.valid) {
+//   this.loading=true;
+//   this.authService.login(this.loginForm.value).subscribe({
+//     next:(res)=>{
+//       console.log(res)
+//       if (res.message==='success') {
+//         this.loading=false
+//       setTimeout(()=>{
+//         localStorage.setItem('userToken',res.token)
+//         this.authService.saveUserData()
+//         this.router.navigate(['/home']);
+//       },500)
+//         this.succes=res.message
+//       }
+//     },
+//     error:(err:HttpErrorResponse)=>{
+//     console.log(err)
+//   this.msgerror= err.error.message;
+//     this.loading=false
+//     }
+//   })
+// }
+    
+// }
 
-        error : (err) =>{
-          console.log(err)
-          this.notyfSer.error(err.error.message)
+submitLogin() {
+  if (this.loginForm.valid) {
+    this.loading = true;
+
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res) => {
+        console.log(res);
+        if (res.message === 'success') {
+          this.loading = false;
+          localStorage.setItem('userToken', res.token);
+          this.authService.saveUserData();
+          this.notyfSer.success(`Welcome ${res.user?.name || ''}`);
+          this.router.navigate(['/home']);
+        } else {
+          this.notyfSer.error('Login failed!');
+          this.loading = false;
         }
-      })
-      
-    }
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err);
+        this.msgerror = err.error.message;
+        this.notyfSer.error(this.msgerror);
+        this.loading = false;
+      }
+    });
+  }
+}
 
+
+    
   }
 
-}
+
+
+

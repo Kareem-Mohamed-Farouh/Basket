@@ -9,12 +9,14 @@ import { ChackoutComponent } from './pages/chackout/chackout.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 export const routes: Routes = [
 
     {path: '' , redirectTo: 'home' , pathMatch: 'full'},
     {path: 'home', component: HomeComponent ,title: 'home'},
     {path: 'shop', component: ShopComponent ,title: 'shop'},
+    {path: 'cart', component: CartComponent ,title: 'cart'},
     {path: 'purchaseorder', component: PurchaseOrderComponent ,title: 'purchaseorder'},
     {path: 'blog', component: BlogComponent ,title: 'blog'},
     {path: 'register', component: RegisterComponent ,title: 'Register'},

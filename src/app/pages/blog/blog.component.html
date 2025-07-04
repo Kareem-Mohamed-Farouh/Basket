@@ -4,7 +4,7 @@
 <div class=" col-span-3   py-10  ">
    @for (product of productData(); track $index) {
      <div class="w-[90%] py-6 ">
-   <div class=" border"> <img class="object-fit w-full " [src]="product.imageCover" [alt]="product.title"></div>
+   <div class=" border "> <img class="object-fit w-full " [src]="product.imageCover" [alt]="product.title"></div>
     <p class="text-gray-600 py-4">{{product.brand.name}}</p>
     <h2 class="text-[36px] font-semibold">{{product.title}}</h2>
     <p class="text-gray-600 py-4">{{product.createdAt | date }}</p>

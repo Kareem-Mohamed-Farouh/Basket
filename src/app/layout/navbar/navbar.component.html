@@ -40,10 +40,10 @@
       </p>
     </div>
 
-    <div class="flex items-center md:border-s-2 md:border-gray-100 md:ps-2">
+    <!--  <div class="flex items-center md:border-s-2 md:border-gray-100 md:ps-2">
       <button
-        id="dropdownNavbarLink"
-        data-dropdown-toggle="dropdownNavbar"
+        id="dropdownNavbarLinkO"
+        data-dropdown-toggle="dropdownNavbarLinkO"
         class="flex items-center w-full gap-2 py-2 text-gray-900"
       >
         English
@@ -64,8 +64,8 @@
         </svg>
       </button>
       <button
-        id="dropdownNavbarLink"
-        data-dropdown-toggle="dropdownNavbar"
+        id="dropdownNavbarLinkT"
+        data-dropdown-toggle="dropdownNavbarLinkT"
         class="flex items-center w-full gap-2 py-2 px-3 text-gray-900"
       >
         USD
@@ -85,7 +85,8 @@
           />
         </svg>
       </button>
-    </div>
+    </div> -->
+   
   </div>
 </nav>
 
@@ -104,11 +105,11 @@
     >
     <div class="relative">
       <input
+        (input)="onSearchChange($event)"
         type="search"
         id="default-search"
         class="w-full max-sm:py-2 md:py-4 ring-main-color ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
         placeholder="Search Mockups, Logos..."
-        required
       />
       <div
         class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
@@ -141,15 +142,12 @@
 
         <span>$0.00</span>
 
-        <div class="relative cart">
-          <a class="block py-2 px-3 text-red-700">
-            <img src="/imgs/cart.png" alt="" />
-          </a>
-          <span
-            class="inline-flex items-center rounded-full bg-[#EA2B0F] h-6 w-6 flex justify-center items-center text-xs font-medium text-white absolute top-0 left-8"
-            >0</span
-          >
-        </div>
+      <div class="relative cart">
+        <a class="block py-2 px-3 text-red-700">
+          <i class="fas fa-cart-shopping"></i>
+        </a>
+        <span class="inline-flex items-center rounded-md bg-[#EA2B0F] px-2 py-1 text-xs font-medium text-white ring-1 ring-green-600/20 ring-inset absolute top-0 left-8">0</span>
+     
       </div>
     </div>
   </div>

@@ -5,7 +5,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
-  imports: [RouterLink],
+  imports: [ RouterLink ],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
 })
@@ -22,13 +22,10 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.getallproducts();
- 
-
- 
+    this.searchShard()
   }
 
-
-    showProductDetails(id: string | null): void {
+  showProductDetails(id: string | null): void {
     this.productsService.getSpecProduct(id).subscribe({
       next: (res) => {
         this.detailsProduct = res.data;
@@ -43,8 +40,8 @@ export class ShopComponent implements OnInit {
   getallproducts():void{
     this.productsService.getAllProducts().subscribe({
       next:(res) => {
-        console.log(res);
-           this.products.set(res.data);
+        this.allProducts = res.data
+        this.filteredProducts = res.data
       },
       error:(error) => {
         console.error(error);

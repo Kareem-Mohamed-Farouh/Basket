@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { baseUrl } from '../../../shared/environments/baseUrl';
+import { jwtDecode } from "jwt-decode";
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { baseUrl } from '../../../shared/environments/baseUrl';
 export class AuthenService {
 
   constructor(private http:HttpClient) { }
+    userData:any=null;
 
 
   //  تسجيل مستخدم جديد
@@ -26,7 +29,14 @@ export class AuthenService {
     return this.http.post(`${baseUrl}/api/v1/auth/forgotPasswords`, { email });
   }
 
+    saveUserData():void{
+  if (  localStorage.getItem('userToken') !==null){
+  this.userData=   jwtDecode(  localStorage.getItem('userToken')!);
+  console.log('userData', this.userData.id)
+  }
+  }
 
+  
   //  التحقق من رمز إعادة تعيين كلمة المرور
   verifyResetCode(code: string):Observable<any> {
     return this.http.post(`${baseUrl}/api/v1/auth/verifyResetCode`, { code });
