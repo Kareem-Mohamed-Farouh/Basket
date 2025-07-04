@@ -270,8 +270,19 @@
 >
   @for (product of productData().slice(0,20); track $index) {
 
-  <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
+  <div
+    class="card cursor-pointer p-3 flex group flex-col gap-[1.25rem] shadow shadow-gray-300"
+  >
     <div class="card-img-top relative">
+      <div
+        class="layer absolute w-full flex flex-col items-center justify-center top-0 opacity-0 group-hover:opacity-100 duration-400 transition-all bottom-0 z-[200]"
+      >
+        <img src="/imgs/eye.png" class="size-8 mx-auto" alt="view" />
+        <span
+          class="inline-block text-xs uppercase text-white p-2 bg-main-color my-2 font-semibold rounded-md"
+          >view DETAILS</span
+        >
+      </div>
       <img
         [src]="product.imageCover"
         class="w-full h-auto object-cover"
@@ -347,7 +358,8 @@
       <p class="text-xs font-semibold text-gray-400 mb-3">Eat one every day.</p>
 
       <button
-        class="text-sm capitalize cursor-pointer bg-[#C2C2D3] text-white px-4 py-1 rounded-full"
+        routerLink="/shop"
+        class="text-sm hover:bg-gray-700 transition-all duration-400 capitalize cursor-pointer bg-[#C2C2D3] text-white px-4 py-1 rounded-full"
       >
         shop now
       </button>
@@ -367,7 +379,8 @@
       <p class="text-xs font-semibold text-gray-400 mb-3">Eat one every day.</p>
 
       <button
-        class="text-sm capitalize cursor-pointer bg-[#C2C2D3] text-white px-4 py-1 rounded-full"
+        routerLink="/shop"
+        class="text-sm hover:bg-gray-700 transition-all duration-400 capitalize cursor-pointer bg-[#C2C2D3] text-white px-4 py-1 rounded-full"
       >
         shop now
       </button>
@@ -387,7 +400,8 @@
       <p class="text-xs font-semibold text-gray-400 mb-3">Eat one every day.</p>
 
       <button
-        class="text-sm capitalize cursor-pointer bg-[#C2C2D3] text-white px-4 py-1 rounded-full"
+        routerLink="/shop"
+        class="text-sm hover:bg-gray-700 transition-all duration-400 capitalize cursor-pointer bg-[#C2C2D3] text-white px-4 py-1 rounded-full"
       >
         shop now
       </button>

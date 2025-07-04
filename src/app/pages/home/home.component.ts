@@ -11,6 +11,7 @@ import { SliderComponent } from '../../shared/components/ui/slider/slider.compon
 import { HomeService } from '../../core/services/homeSer/home.service';
 import { CategoryService } from '../../core/services/categorySer/category.service';
 import { MoreproductComponent } from '../../shared/components/ui/moreproduct/moreproduct.component';
+import { RouterLink } from '@angular/router';
 interface IProduct {
   sold: number;
   images: string[];
@@ -56,6 +57,7 @@ interface ICategory {
 @Component({
   selector: 'app-home',
   imports: [
+    RouterLink,
     MainsliderComponent,
     AddbuttonComponent,
     SliderComponent,
