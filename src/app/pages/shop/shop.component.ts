@@ -1,28 +1,32 @@
-import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { HomeService } from '../../core/services/homeSer/home.service';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
-  imports: [ RouterLink ],
+  imports: [RouterLink],
   templateUrl: './shop.component.html',
-  styleUrl: './shop.component.scss'
+  styleUrl: './shop.component.scss',
 })
 export class ShopComponent implements OnInit {
-  private readonly productsService = inject(HomeService)
-  private readonly activatedRoute= inject(ActivatedRoute);
-    detailsProduct:IProduct|null=null ;
+  private readonly productsService = inject(HomeService);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  detailsProduct: IProduct | null = null;
 
-  showModal :WritableSignal<IProduct[]>=signal ([]);
-  
-   products:WritableSignal<IProduct[]>=signal ([])
+  showModal: WritableSignal<IProduct[]> = signal([]);
 
-
+  products: WritableSignal<IProduct[]> = signal([]);
 
   ngOnInit(): void {
     this.getallproducts();
-    this.searchShard()
+    this.searchShard();
   }
 
   showProductDetails(id: string | null): void {
@@ -33,26 +37,19 @@ export class ShopComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error loading product details:', err);
-      }
+      },
     });
   }
 
-  getallproducts():void{
+  getallproducts(): void {
     this.productsService.getAllProducts().subscribe({
-      next:(res) => {
-        this.allProducts = res.data
-        this.filteredProducts = res.data
+      next: (res) => {
+        this.allProducts = res.data;
+        this.filteredProducts = res.data;
       },
-      error:(error) => {
+      error: (error) => {
         console.error(error);
-     
-      }
-      
-    })
+      },
+    });
   }
-
-
-
 }
-
-
