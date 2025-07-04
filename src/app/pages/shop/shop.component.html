@@ -112,7 +112,7 @@
     </div>
 
     <div class="grid grid-cols-4 gap-3 ml-6">
-      @for (PRO of products(); track PRO.id) {
+      @for (PRO of filteredProducts; track PRO.id) {
         <div class="text-white card p-4 rounded-md overflow-hidden shadow relative">
           <div>
             <div (click)="showProductDetails(PRO.id)" class="card-img">
@@ -140,7 +140,7 @@
             </div>
           </div>
           <div class="flex items-center rounded-full w-full shadow border bttom">
-  <button (click)="addToCart(PRO.id)" class=" bg-[#000] w-full rounded-full p-2  ">Add TO Cart</button>
+  <button (click)="addToCart(PRO.id)" class=" bg-[#000] cursor-pointer w-full rounded-full p-2  ">Add TO Cart</button>
           </div>
         </div>
       }

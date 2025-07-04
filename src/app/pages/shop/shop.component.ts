@@ -69,6 +69,7 @@ import { NotyfService } from './../../core/services/notyfSer/notyf.service';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { ICart } from '../../shared/interfaces/icart';
 import { RouterLink } from '@angular/router';
+import { SearchService } from '../../core/services/searchSer/search.service';
 
 @Component({
   selector: 'app-shop',
@@ -80,20 +81,26 @@ import { RouterLink } from '@angular/router';
 export class ShopComponent implements OnInit {
   private readonly productsService = inject(HomeService);
   private readonly cartService = inject(CartService);
-  // private readonly toaster = inject(NotyfService);
+   private readonly SearchService = inject(SearchService);
+   private notyfService = inject(NotyfService)
 
   products: WritableSignal<IProduct[]> = signal([]);
   detailsProduct: IProduct | null = null;
   CartDetalis: ICart = {} as ICart;
+   allProducts: IProduct[] = []
+  filteredProducts: IProduct[] = []
 
   ngOnInit(): void {
     this.getallproducts();
+    this.searchShard()
   }
 
   getallproducts(): void {
     this.productsService.getAllProducts().subscribe({
       next: (res) => {
         this.products.set(res.data);
+        this.allProducts = res.data
+        this.filteredProducts = res.data
       },
       error: (error) => {
         console.error(error);
@@ -120,6 +127,7 @@ export class ShopComponent implements OnInit {
     this.cartService.addToCart(id).subscribe({
       next: (res) => {
         // this.toaster.success(res.message);
+        this.notyfService.success(res.message)
         this.cartService.cartNumber.set(res.numOfCartItems);
       },
       error: (err) => {
@@ -138,4 +146,13 @@ export class ShopComponent implements OnInit {
       },
     });
   }
+
+    searchShard(){
+   this.SearchService.searchTerm$.subscribe(term => {
+    this.filteredProducts = this.allProducts.filter(product =>
+      product.title.toLowerCase().includes(term.toLowerCase())
+    );
+  });
+
+}
 }
