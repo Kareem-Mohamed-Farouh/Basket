@@ -16,14 +16,9 @@ export class LoginComponent  {
  private readonly authService=inject(AuthenService);
   private readonly router=inject(Router);
   private notyfSer = inject(NotyfService)
-
-  // userName : WritableSignal<string> = signal('');
-  // errMessage : WritableSignal<string> = signal('');
-
  loading:boolean=false;
  msgerror:string=""
  succes:string=""
-
 
   loginForm:FormGroup = new FormGroup({
     email:new FormControl(null,[Validators.required,Validators.email]),
@@ -31,31 +26,7 @@ export class LoginComponent  {
   })
 
 
-//   submitFrom():void{
-// if (this.loginForm.valid) {
-//   this.loading=true;
-//   this.authService.login(this.loginForm.value).subscribe({
-//     next:(res)=>{
-//       console.log(res)
-//       if (res.message==='success') {
-//         this.loading=false
-//       setTimeout(()=>{
-//         localStorage.setItem('userToken',res.token)
-//         this.authService.saveUserData()
-//         this.router.navigate(['/home']);
-//       },500)
-//         this.succes=res.message
-//       }
-//     },
-//     error:(err:HttpErrorResponse)=>{
-//     console.log(err)
-//   this.msgerror= err.error.message;
-//     this.loading=false
-//     }
-//   })
-// }
-    
-// }
+
 
 submitLogin() {
   if (this.loginForm.valid) {

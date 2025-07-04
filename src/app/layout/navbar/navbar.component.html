@@ -141,16 +141,25 @@
 
         <span>$0.00</span>
 
-        <div class="relative cart">
+        <div routerLink="/cart" class="relative cursor-pointer cart">
           <a class="block py-2 px-3 text-red-700">
-            <img src="/imgs/cart.png" alt="" />
+            <i class="fas fa-cart-shopping"></i>
           </a>
           <span
-            class="inline-flex items-center rounded-full bg-[#EA2B0F] h-6 w-6 flex justify-center items-center text-xs font-medium text-white absolute top-0 left-8"
-            >0</span
+            class="inline-flex items-center rounded-md bg-[#EA2B0F] px-2 py-1 text-xs font-medium text-white ring-1 ring-green-600/20 ring-inset absolute top-0 left-8"
+            >{{ countCart() }}</span
           >
         </div>
       </div>
+    </div>
+    <div class="relative cart">
+      <a class="block py-2 px-3 text-red-700">
+        <img src="/imgs/cart.png" alt="" />
+      </a>
+      <span
+        class="inline-flex items-center rounded-full bg-[#EA2B0F] h-6 w-6 flex justify-center items-center text-xs font-medium text-white absolute top-0 left-8"
+        >0</span
+      >
     </div>
   </div>
 </nav>
