@@ -1,7 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { CartService } from '../../core/services/cartSer/cart.service';
 import { ICart } from '../../shared/interfaces/icart';
 import { RouterLink } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -12,11 +13,19 @@ import { RouterLink } from '@angular/router';
 export class CartComponent implements OnInit {
 
   private readonly cartService=inject(CartService)
+    private readonly platformID =inject(PLATFORM_ID)
   CartDetalis:ICart={} as ICart
 
 
   ngOnInit(): void {
-      this.getCartData()
+     if (isPlatformBrowser(this.platformID)) {
+ if (localStorage.getItem('token')) {
+    this.getCartData()
+    }
+     }
+   
+
+     
   }
   getCartData():void{
     this.cartService.getCartItems().subscribe({

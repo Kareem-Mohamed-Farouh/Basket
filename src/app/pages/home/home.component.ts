@@ -14,31 +14,22 @@ import { CategoryService } from '../../core/services/categorySer/category.servic
 import { MoreproductComponent } from '../../shared/components/ui/moreproduct/moreproduct.component';
 
 import { SearchService } from '../../core/services/searchSer/search.service';
-
 import { RouterLink } from '@angular/router';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { ICategories } from '../../shared/interfaces/icategories';
 
 @Component({
   selector: 'app-home',
-  imports: [
-    RouterLink,
-    MainsliderComponent,
-    AddbuttonComponent,
-    SliderComponent,
-    MoreproductComponent,
-  ],
+  imports: [RouterLink, MainsliderComponent, SliderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   productData: WritableSignal<IProduct[]> = signal<IProduct[]>([]);
 
-  allProducts: IProduct[] = [];
-  filteredProducts: IProduct[] = [];
+  categoryData: WritableSignal<ICategory[]> = signal<ICategory[]>([]);
 
   categoryData: WritableSignal<ICategories[]> = signal<ICategories[]>([]);
-
   private readonly homeService = inject(HomeService);
   private readonly categoryService = inject(CategoryService);
   private readonly SearchService = inject(SearchService);
@@ -46,7 +37,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getHomeProduct();
     this.getCategories();
-    this.searchShard();
   }
 
   getHomeProduct(): void {
@@ -64,14 +54,6 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         this.categoryData.set(res.data);
       },
-    });
-  }
-
-  searchShard() {
-    this.SearchService.searchTerm$.subscribe((term) => {
-      this.filteredProducts = this.allProducts.filter((product) =>
-        product.title.toLowerCase().includes(term.toLowerCase())
-      );
     });
   }
 }

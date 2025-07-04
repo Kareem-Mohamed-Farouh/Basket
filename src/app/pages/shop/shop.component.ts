@@ -8,6 +8,7 @@ import {
 import { HomeService } from '../../core/services/homeSer/home.service';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { SearchService } from '../../core/services/searchSer/search.service';
 
 @Component({
   selector: 'app-shop',
@@ -21,8 +22,10 @@ export class ShopComponent implements OnInit {
   detailsProduct: IProduct | null = null;
 
   showModal: WritableSignal<IProduct[]> = signal([]);
-
+  private readonly SearchService = inject(SearchService);
   products: WritableSignal<IProduct[]> = signal([]);
+  allProducts: IProduct[] = [];
+  filteredProducts: IProduct[] = [];
 
   ngOnInit(): void {
     this.getallproducts();
@@ -50,6 +53,14 @@ export class ShopComponent implements OnInit {
       error: (error) => {
         console.error(error);
       },
+    });
+  }
+
+  searchShard() {
+    this.SearchService.searchTerm$.subscribe((term) => {
+      this.filteredProducts = this.allProducts.filter((product) =>
+        product.title.toLowerCase().includes(term.toLowerCase())
+      );
     });
   }
 }

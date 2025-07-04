@@ -66,7 +66,7 @@ submitLogin() {
         console.log(res);
         if (res.message === 'success') {
           this.loading = false;
-          localStorage.setItem('userToken', res.token);
+          localStorage.setItem('token', res.token);
           this.authService.saveUserData();
           this.notyfSer.success(`Welcome ${res.user?.name || ''}`);
           this.router.navigate(['/home']);
