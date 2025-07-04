@@ -7,9 +7,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { AddbuttonComponent } from './shared/components/ui/addbutton/addbutton.component';
 import { SliderComponent } from './shared/components/ui/slider/slider.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
-import { ShopComponent } from "./pages/shop/shop.component";
-import { RegisterComponent } from "./pages/register/register.component";
-import { AboutUsComponent } from "./pages/about-us/about-us.component";
+import { ShopComponent } from './pages/shop/shop.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { MainsliderComponent } from './shared/components/ui/mainslider/mainslider.component';
 
 @Component({
   selector: 'app-root',
@@ -23,8 +24,9 @@ import { AboutUsComponent } from "./pages/about-us/about-us.component";
     NotfoundComponent,
     ShopComponent,
     RegisterComponent,
-    AboutUsComponent
-],
+    AboutUsComponent,
+    MainsliderComponent,
+  ],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

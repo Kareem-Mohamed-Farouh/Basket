@@ -1,7 +1,7 @@
 <app-slider></app-slider>
 
 <div
-  class="lg:px-[5rem] xl:px-[15rem] px-4 my-8 grid md:grid-cols-5 max-sm:grid-cols-1 sm:grid-cols-2"
+  class="lg:px-[5rem] xl:px-[15rem] px-4 my-8 grid md:grid-cols-5 max-sm:grid-cols-2 sm:grid-cols-2"
 >
   @for (category of categoryData().slice(1); track $index) { @if ($index === 0)
   {
@@ -235,6 +235,7 @@
     </div>
   </div>
 </div>
+
 <div
   class="lg:px-[5rem] xl:px-[15rem] px-4 my-8 flex items-center justify-between"
 >
@@ -251,6 +252,7 @@
     ></i>
   </div>
 </div>
+<app-mainslider></app-mainslider>
 
 <div class="lg:px-[5rem] xl:px-[15rem] px-4">
   <p
@@ -266,7 +268,7 @@
 <div
   class="grid max-sm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-0 lg:px-[5rem] xl:px-[15rem] px-4"
 >
-  @for (product of productData(); track $index) {
+  @for (product of productData().slice(0,20); track $index) {
 
   <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
     <div class="card-img-top relative">
@@ -318,10 +320,20 @@
   }
 </div>
 
+<!-- <p #vi class="bg-addbtn-color cursor-pointer p-2 inline-block my-2">
+  view more
+</p>
+
+@defer (on hover(vi)) {
+
+<app-moreproduct></app-moreproduct>
+} -->
+
+<!-- advertisment -->
 <div
   class="lg:px-[5rem] xl:px-[15rem] px-4 my-8 grid md:grid-cols-3 max-sm:grid-cols-1 sm:grid-cols-2 gap-4"
 >
-  <div class="relative">
+  <div class="relative card">
     <div class="img-card rounded-md overflow-hidden">
       <img src="/imgs/bacola-banner-05.jpg.png" class="object-cover" alt="v" />
     </div>
@@ -341,7 +353,7 @@
       </button>
     </div>
   </div>
-  <div class="relative">
+  <div class="relative card">
     <div class="img-card rounded-md overflow-hidden">
       <img src="/imgs/bacola-banner-06.jpg.png" class="object-cover" alt="v" />
     </div>
@@ -361,7 +373,7 @@
       </button>
     </div>
   </div>
-  <div class="relative">
+  <div class="relative card">
     <div class="img-card rounded-md overflow-hidden">
       <img src="/imgs/bacola-banner-10.jpg.png" class="object-cover" alt="v" />
     </div>
@@ -386,7 +398,7 @@
 <div
   class="lg:px-[5rem] xl:px-[15rem] px-4 my-8 grid md:grid-cols-3 max-sm:grid-cols-1 sm:grid-cols-2 gap-4"
 >
-  <div class="">
+  <div class="card">
     <div class="img-card rounded-md overflow-hidden">
       <img src="/imgs/blog-3.jpg.png" class="object-cover" alt="v" />
     </div>
@@ -404,7 +416,7 @@
       <p class="text-xs font-semibold text-gray-400 mb-3">Jan 13 2025</p>
     </div>
   </div>
-  <div class="">
+  <div class="card">
     <div class="img-card rounded-md overflow-hidden">
       <img src="/imgs/blog-5.jpg.png" class="object-cover" alt="v" />
     </div>
@@ -422,7 +434,7 @@
       <p class="text-xs font-semibold text-gray-400 mb-3">Jan 13 2025</p>
     </div>
   </div>
-  <div class="">
+  <div class="card">
     <div class="img-card rounded-md overflow-hidden">
       <img src="/imgs/blog-1.jpg.png" class="object-cover" alt="v" />
     </div>

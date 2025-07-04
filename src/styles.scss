@@ -5,7 +5,6 @@
 @import "tailwindcss";
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
-@source "../node_modules/flowbite";
 
 @theme {
   --color-main-color: rgba(53, 175, 160, 1);
@@ -49,10 +48,9 @@
 }
 
 .dosis-font {
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
   font-weight: 600;
 }
-
 
 /* === Notyf - Dark Style === */
 
@@ -85,21 +83,17 @@
   bottom: -2px;
   border-radius: 16px;
   background: conic-gradient(
-    #35AFA0 0deg,
+    #35afa0 0deg,
     transparent 90deg,
-    #35AFA0 180deg,
+    #35afa0 180deg,
     transparent 270deg,
-    #35AFA0 360deg
+    #35afa0 360deg
   );
   animation: rotateBorder 2s linear infinite;
   z-index: 1;
   pointer-events: none;
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: xor;
   padding: 2px;
@@ -145,4 +139,3 @@
     transform: rotate(1turn);
   }
 }
-

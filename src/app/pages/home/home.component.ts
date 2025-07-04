@@ -10,6 +10,7 @@ import { AddbuttonComponent } from '../../shared/components/ui/addbutton/addbutt
 import { SliderComponent } from '../../shared/components/ui/slider/slider.component';
 import { HomeService } from '../../core/services/homeSer/home.service';
 import { CategoryService } from '../../core/services/categorySer/category.service';
+import { MoreproductComponent } from '../../shared/components/ui/moreproduct/moreproduct.component';
 interface IProduct {
   sold: number;
   images: string[];
@@ -54,7 +55,12 @@ interface ICategory {
 }
 @Component({
   selector: 'app-home',
-  imports: [MainsliderComponent, AddbuttonComponent, SliderComponent],
+  imports: [
+    MainsliderComponent,
+    AddbuttonComponent,
+    SliderComponent,
+    MoreproductComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -72,8 +78,8 @@ export class HomeComponent implements OnInit {
   getHomeProduct(): void {
     this.homeService.getAllProducts().subscribe({
       next: (res) => {
-        console.log(res.data);
         this.productData.set(res.data);
+        console.log(res.data);
       },
     });
   }
