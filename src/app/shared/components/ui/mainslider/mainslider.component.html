@@ -1,4 +1,5 @@
-<swiper-container
+@if (isBrowser()) {
+  <swiper-container
   [attr.slides-per-view]="slidesPerView()"
   speed="500"
   loop="true"
@@ -66,3 +67,4 @@
 
   }
 </swiper-container>
+}

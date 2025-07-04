@@ -6,61 +6,61 @@
   <div class="w-full md:w-1/4">
     <table class="w-full text-sm">
       <tbody>
-              <tr>
-        <td class="uppercase font-bold pb-5 head uppercase">
-          Product Categories
-        </td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Beverages</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Biscuits & Snacks</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Breads & Bakery</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Breakfast & Dairy</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Frozen Foods</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Fruits & Vegetables</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Grocery & Staples</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Household Needs</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Meats & Seafood</td>
-      </tr>
+        <tr>
+          <td class="uppercase font-bold pb-5 head uppercase">
+            Product Categories
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Beverages</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Biscuits & Snacks</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Breads & Bakery</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Breakfast & Dairy</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Frozen Foods</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Fruits & Vegetables</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Grocery & Staples</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Household Needs</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Meats & Seafood</td>
+        </tr>
       </tbody>
 
 
 
       <tbody>
-              <tr>
-        <td class="uppercase font-bold pt-6 pb-2 head uppercase">Brands</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Frito Lay (8)</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Quaker (36)</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Cola (1)</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Welch's (1)</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="mr-2" />Oreo (16)</td>
-      </tr>
+        <tr>
+          <td class="uppercase font-bold pt-6 pb-2 head uppercase">Brands</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Frito Lay (8)</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Quaker (36)</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Cola (1)</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Welch's (1)</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="mr-2" />Oreo (16)</td>
+        </tr>
       </tbody>
     </table>
 
@@ -73,18 +73,10 @@
         </div>
 
         <div class="inp flex items-center mt-3 space-x-2">
-          <input
-            type="number"
-            placeholder="0"
-            class="w-full p-10 bg-gray-100 rounded"
-          />
+          <input type="number" placeholder="0" class="w-full p-10 bg-gray-100 rounded" />
           <span>-</span>
 
-          <input
-            type="number"
-            placeholder="65.00"
-            class="w-full p-10 bg-gray-100 rounded"
-          />
+          <input type="number" placeholder="65.00" class="w-full p-10 bg-gray-100 rounded" />
         </div>
       </div>
 
@@ -105,21 +97,13 @@
       </div>
 
       <div class="pt-4">
-        <img
-          src="/imgs/sidebar-banner.gif.png"
-          alt="Starbucks Happy Hour"
-          class="rounded-lg shadow"
-        />
+        <img src="/imgs/sidebar-banner.gif.png" alt="Starbucks Happy Hour" class="rounded-lg shadow" />
       </div>
     </div>
   </div>
 
   <div class="relative">
-    <img
-      src="/imgs/bacola-18.jpg.png"
-      alt="Banner"
-      class="object-cover w-full rounded"
-    />
+    <img src="/imgs/bacola-18.jpg.png" alt="Banner" class="object-cover w-full rounded" />
     <div class="content absolute  flex flex-col text-white p-4">
       <h3>Organic Meals Prepared</h3>
       <h2>Delivered to <span>your Home</span></h2>
@@ -135,25 +119,19 @@
       </div>
     </div>
 
-     <div class="grid grid-cols-4 gap-3 ml-6"> 
-      @for (PRO of products(); track PRO.id) {
-          <div
-        class="text-white card p-4 rounded-md overflow-hidden shadow  relative" 
-      >
-        <div   >
-          <div (click)="showProductDetails( PRO.id  )"  class="card-img">
-            <img
-              [src]="PRO.imageCover"
-            
-              class="w-full object-contain"
-              [alt]="PRO.description" data-modal-target="default-modal" data-modal-toggle="default-modal"
-            />
+    <div class="grid grid-cols-4 gap-3 ml-6">
+      @for (PRO of filteredProducts; track PRO.id) {
+      <div class="text-white card p-4 rounded-md overflow-hidden shadow  relative">
+        <div>
+          <div (click)="showProductDetails( PRO.id  )" class="card-img">
+            <img [src]="PRO.imageCover" class="w-full object-contain" [alt]="PRO.description"
+              data-modal-target="default-modal" data-modal-toggle="default-modal" />
           </div>
           <div class="card-body px-2">
 
             <h3 class="py-3">{{PRO.title.split(" " ,2).join(" ")}}</h3>
             <h4 class="pb-3">In stock:{{PRO.quantity}}</h4>
-               <span class="text-[#000]">Sold:{{PRO.sold}}</span>
+            <span class="text-[#000]">Sold:{{PRO.sold}}</span>
             <div class="starts text-[#000] pb-5">
               <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
               <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
@@ -162,155 +140,139 @@
               <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
               {{PRO.ratingsAverage}}
 
-          
+
             </div>
-             
+
 
             <span class="salary pt-5">${{PRO.price}}</span>
           </div>
         </div>
         <div class="flex items-center rounded-full w-full shadow border bttom">
-          <button
-            class="btn1 bg-gray-100 w-10 h-10 text-xl font-bold text-black"
-          >
+          <button class="btn1 bg-gray-100 w-10 h-10 text-xl font-bold text-black">
             −
           </button>
           <div class="flex-1 text-center text-xl text-gray-600 font-medium">
             0
           </div>
-          <button
-            class="btn2 bg-yellow-400 w-10 h-10 text-xl font-bold text-black"
-          >
+          <button class="btn2 bg-yellow-400 w-10 h-10 text-xl font-bold text-black">
             +
           </button>
         </div>
       </div>
       }
-    
-    </div> 
+
+    </div>
 
   </div>
 </div>
 
-
-
-
-
-
 <section class="datelis grid md:grid-cols-4  ">
-  
 
-
-
-<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden  fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] ">
+  <div id="default-modal" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden  fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] ">
     <div class="relative  max-w-screen-xl max-h-full ">
-        
-        <div class="relative bg-white rounded-lg shadow-sm ">
-            <div class="flex items-center justify-between   rounded-t d">
-                <button  type="button"  class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-hide="default-modal" >
-                  
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
+
+      <div class="relative bg-white rounded-lg shadow-sm ">
+        <div class="flex items-center justify-between   rounded-t d">
+          <button type="button"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
+            data-modal-hide="default-modal">
+
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+
+
+        <div class=" flex gap-8   ">
+          <div class="picture ">
+            @for (date of detailsProduct?.images; track $index) {
+
+            <div class="w-20 h-20 overflow-hidden gap-3 flex-col  rounded cursor-pointer hover:scale-105 transition ">
+              <img class="object-cover flex-col  " [src]="date" [alt]="detailsProduct?.title">
+
+
             </div>
-        
-            
-                 <div class=" flex gap-8   ">
-                  <div class="picture ">
-                               @for (date of detailsProduct?.images; track $index) {
-            
-                <div class="w-20 h-20 overflow-hidden gap-3 flex-col  rounded cursor-pointer hover:scale-105 transition ">
-                  <img class="object-cover flex-col  " [src]="date" [alt]="detailsProduct?.title">
-                  
+            }
+          </div>
+
+          <div class="flex ">
+            @if (detailsProduct) {
+            <div class="middle    ">
+              <img [src]="detailsProduct.imageCover" class=" " [alt]="detailsProduct.title">
+            </div>
+            }
+            @if (detailsProduct) {
+            <div class="stop ml-6 justify-start">
+              <h2>{{detailsProduct.title}}</h2>
+              <p>Price:{{detailsProduct.price}}</p>
+              <div class="role ">
+                <span class="capitalize">available in:</span>
+                <div class="pt-3 ">
+                  <ul class="flex gap-3">
+                    <li>
+                      <a class="btn text-[#000] "> Small</a>
+                    </li>
+                    <li>
+                      <a class="btn"> Medium</a>
+                    </li>
+                    <li>
+                      <a class="btn"> Large</a>
+                    </li>
+                  </ul>
 
                 </div>
-              }
-
-                  </div>
-
-        
-
-              <div class="flex ">
-                              @if (detailsProduct) {
-                                <div class="middle    ">
-                  <img [src]="detailsProduct.imageCover" class=" "  [alt]="detailsProduct.title">
-                </div>
-              }
-
-             @if (detailsProduct) {
-                 <div class="stop ml-6 justify-start">
-                  <h2>{{detailsProduct.title}}</h2>
-                  <p>Price:{{detailsProduct.price}}</p>
-                  <div class="role ">
-                    <span class="capitalize">available in:</span>
-                    <div class="pt-3 ">
-                       <ul class="flex gap-3">
-                      <li>
-                        <a class="btn text-[#000] "> Small</a>
-                      </li>
-                      <li>
-                        <a class="btn"> Medium</a>
-                      </li>
-                      <li>
-                        <a class="btn"> Large</a>
-                      </li>
-                    </ul>
-                    
-                    </div>
-
-
-                    
-
-                  </div>
-
-                      <div class="flex w-full bg-[#f3f5f9]   items-center justify-center mt-4  mb-4">
-                   <button class="px-4 py-2 text-3xl">−</button>
-                   <span class="px-4 ">1</span>
-                    <button class="px-4 py-2 text-3xl">+</button>
-                  </div>
-
-                  <button class="bg-teal-500 text-white w-full py-3 rounded flex items-center justify-center space-x-2 mb-4">
- 
-                   <i class="fa-solid fa-bag-shopping" style="color: #63E6BE;"></i>
-                   <span>Add to Cart</span>
-                  </button>
-
-                  <div class=" share flex space-x-2 mb-4  w-full">
-                  <button class=" border-2 rounded px-16 py-2 flex items-center space-x-1">
-                     <span><i class="fa-solid fa-heart"></i></span><span>Wishlist</span>
-                    </button>
-                  <button class=" border-2 rounded px-16 py-2 flex items-center space-x-1">
-                     <span><i class="fa-solid fa-share"></i></span><span>Share</span>
-                   </button>
-                         </div>
-
-                         <div class="flex flex-wrap items-center space-x-2 mt-2">
-                           <span class="text-gray-500">Tags:</span>
-                              <span class="border px-2 py-1 rounded text-sm">Fast Food</span>
-                            <span class="border px-2 py-1 rounded text-sm">Organic Corn</span>
-                            <span class="border px-2 py-1 rounded text-sm">Flavoured</span>
-                             <span class="border px-2 py-1 rounded text-sm">Dry Food</span>
-                            </div>
-
-                            <div class="footer my-4">
-                              <h4>Product Details:</h4>
-                              <p>{{detailsProduct.description}} <span>Read More</span></p>
-                            </div>
-                </div>
-             }
-
+              </div>
+              <div class="flex w-full bg-[#f3f5f9]   items-center justify-center mt-4  mb-4">
+                <button class="px-4 py-2 text-3xl">−</button>
+                <span class="px-4 ">1</span>
+                <button class="px-4 py-2 text-3xl">+</button>
               </div>
 
+              <button
+                class="bg-teal-500 text-white w-full py-3 rounded flex items-center justify-center space-x-2 mb-4">
 
+                <i class="fa-solid fa-bag-shopping" style="color: #63E6BE;"></i>
+                <span>Add to Cart</span>
+              </button>
 
+              <div class=" share flex space-x-2 mb-4  w-full">
+                <button class=" border-2 rounded px-16 py-2 flex items-center space-x-1">
+                  <span><i class="fa-solid fa-heart"></i></span><span>Wishlist</span>
+                </button>
+                <button class=" border-2 rounded px-16 py-2 flex items-center space-x-1">
+                  <span><i class="fa-solid fa-share"></i></span><span>Share</span>
+                </button>
+              </div>
+
+              <div class="flex flex-wrap items-center space-x-2 mt-2">
+                <span class="text-gray-500">Tags:</span>
+                <span class="border px-2 py-1 rounded text-sm">Fast Food</span>
+                <span class="border px-2 py-1 rounded text-sm">Organic Corn</span>
+                <span class="border px-2 py-1 rounded text-sm">Flavoured</span>
+                <span class="border px-2 py-1 rounded text-sm">Dry Food</span>
+              </div>
+
+              <div class="footer my-4">
+                <h4>Product Details:</h4>
+                <p>{{detailsProduct.description}} <span>Read More</span></p>
+              </div>
             </div>
-           
-         
+            }
+
+          </div>
+
+
 
         </div>
+
+
+
+      </div>
     </div>
-</div>
+  </div>
 
 </section>

@@ -34,7 +34,7 @@
     <div class="card-body flex flex-col items-start justify-between">
       <h3 class="text-sm font-bold">{{ category.name }}</h3>
       <p class="text-xs">{{ $index + 1 }} items</p>
-      <!-- <p class="text-sm text-gray-500">{{ category.slug }}</p> -->
+     
     </div>
   </div>
   } }
@@ -116,7 +116,7 @@
           <span class="text-sm text-gray-500 font-semibold">1 review</span>
         </div>
 
-        <!-- <app-addbutton label="add to cart"></app-addbutton> -->
+      
       </div>
     </div>
     <p class="uppercase font-semibold text-sm text-gray-300 mt-3 text-right">
@@ -178,7 +178,7 @@
             >$ {{ product.price }}
           </span>
         </div>
-        <!-- <app-addbutton label="add to cart"></app-addbutton> -->
+       
       </div>
     </div>
 
@@ -263,12 +263,12 @@
   </p>
 </div>
 
-<!-- <app-slider></app-slider> -->
+
 
 <div
   class="grid max-sm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-0 lg:px-[5rem] xl:px-[15rem] px-4"
 >
-  @for (product of productData().slice(0,20); track $index) {
+  @for (product of filteredProducts; track $index) {
 
   <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
     <div class="card-img-top relative">
@@ -285,8 +285,9 @@
     </div>
     <div class="card-body">
       <p class="card-text font-semibold text-sm line-clamp-2">
-        {{ product.description }}
+        {{ product.title }}
       </p>
+     
       <span class="text-stock-color font-semibold uppercase text-xs">{{
         product.quantity + " In stock"
       }}</span>

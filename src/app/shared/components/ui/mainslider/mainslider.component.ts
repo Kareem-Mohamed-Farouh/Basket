@@ -55,6 +55,7 @@ interface Subcategory {
 })
 export class MainsliderComponent implements OnInit, AfterViewInit {
   slidesPerView: WritableSignal<number> = signal(5);
+  isBrowser: WritableSignal<boolean> = signal(false);
   screenWidth: WritableSignal<number> = signal(0);
   productData: WritableSignal<IProduct[]> = signal<IProduct[]>([]);
   private readonly homeService = inject(HomeService);
@@ -75,6 +76,7 @@ export class MainsliderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.pLATFORM_ID)) {
+      this.isBrowser.set(true)
       this.getScreenWidth();
     }
   }

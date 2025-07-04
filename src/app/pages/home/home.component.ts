@@ -1,5 +1,6 @@
 import {
   Component,
+  computed,
   inject,
   OnInit,
   signal,
@@ -11,6 +12,7 @@ import { SliderComponent } from '../../shared/components/ui/slider/slider.compon
 import { HomeService } from '../../core/services/homeSer/home.service';
 import { CategoryService } from '../../core/services/categorySer/category.service';
 import { MoreproductComponent } from '../../shared/components/ui/moreproduct/moreproduct.component';
+import { SearchService } from '../../core/services/searchSer/search.service';
 interface IProduct {
   sold: number;
   images: string[];
@@ -66,20 +68,25 @@ interface ICategory {
 })
 export class HomeComponent implements OnInit {
   productData: WritableSignal<IProduct[]> = signal<IProduct[]>([]);
+  allProducts: IProduct[] = []
+  filteredProducts: IProduct[] = []
   categoryData: WritableSignal<ICategory[]> = signal<ICategory[]>([]);
   private readonly homeService = inject(HomeService);
   private readonly categoryService = inject(CategoryService);
+  private readonly SearchService = inject(SearchService);
 
   ngOnInit(): void {
     this.getHomeProduct();
     this.getCategories();
+    this.searchShard()
   }
 
   getHomeProduct(): void {
     this.homeService.getAllProducts().subscribe({
       next: (res) => {
         this.productData.set(res.data);
-        console.log(res.data);
+        this.allProducts = res.data
+        this.filteredProducts = res.data
       },
     });
   }
@@ -87,10 +94,17 @@ export class HomeComponent implements OnInit {
   getCategories(): void {
     this.categoryService.getAllCategories().subscribe({
       next: (res) => {
-        console.log(res);
-        console.log(res.data);
         this.categoryData.set(res.data);
       },
     });
   }
+
+  searchShard(){
+   this.SearchService.searchTerm$.subscribe(term => {
+    this.filteredProducts = this.allProducts.filter(product =>
+      product.title.toLowerCase().includes(term.toLowerCase())
+    );
+  });
+
+}
 }
