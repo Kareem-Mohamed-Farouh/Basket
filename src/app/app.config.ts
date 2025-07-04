@@ -1,6 +1,7 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { routes } from './app.routes';
 import {
@@ -13,6 +14,7 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { headerInterceptor } from './shared/interceptors/header/header.interceptor';
+import { loadingInterceptor } from './shared/interceptors/loading/loading.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +24,10 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'top' })
     ),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch(), withInterceptors([headerInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([headerInterceptor,loadingInterceptor])),
+
+     importProvidersFrom(NgxSpinnerModule)
+
+
   ],
 };

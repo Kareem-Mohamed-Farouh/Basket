@@ -10,6 +10,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ShopComponent } from "./pages/shop/shop.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { AboutUsComponent } from "./pages/about-us/about-us.component";
+import { NgxSpinnerComponent } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ import { AboutUsComponent } from "./pages/about-us/about-us.component";
     NotfoundComponent,
     ShopComponent,
     RegisterComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    NgxSpinnerComponent
 ],
 
   templateUrl: './app.component.html',
