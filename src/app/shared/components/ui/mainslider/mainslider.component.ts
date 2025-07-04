@@ -13,39 +13,8 @@ import {
 
 import { HomeService } from '../../../../core/services/homeSer/home.service';
 import { AddbuttonComponent } from '../addbutton/addbutton.component';
-interface IProduct {
-  sold: number;
-  images: string[];
-  subcategory: Subcategory[];
-  ratingsQuantity: number;
-  _id: string;
-  title: string;
-  slug: string;
-  description: string;
-  quantity: number;
-  price: number;
-  imageCover: string;
-  category: Category;
-  brand: Category;
-  ratingsAverage: number;
-  createdAt: string;
-  updatedAt: string;
-  id: string;
-}
+import { IProduct } from '../../../interfaces/iproduct';
 
-interface Category {
-  _id: string;
-  name: string;
-  slug: string;
-  image: string;
-}
-
-interface Subcategory {
-  _id: string;
-  name: string;
-  slug: string;
-  category: string;
-}
 @Component({
   selector: 'app-mainslider',
   imports: [AddbuttonComponent],
