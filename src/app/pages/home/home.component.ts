@@ -12,6 +12,7 @@ import { SliderComponent } from '../../shared/components/ui/slider/slider.compon
 import { HomeService } from '../../core/services/homeSer/home.service';
 import { CategoryService } from '../../core/services/categorySer/category.service';
 import { MoreproductComponent } from '../../shared/components/ui/moreproduct/moreproduct.component';
+<<<<<<< HEAD
 import { SearchService } from '../../core/services/searchSer/search.service';
 interface IProduct {
   sold: number;
@@ -32,32 +33,16 @@ interface IProduct {
   updatedAt: string;
   id: string;
 }
+=======
+import { RouterLink } from '@angular/router';
+import { IProduct } from '../../shared/interfaces/iproduct';
+import { ICategories } from '../../shared/interfaces/icategories';
+>>>>>>> 3c2a5b76d2cba68bd59707de6a47caeebdcd6fca
 
-interface Category {
-  _id: string;
-  name: string;
-  slug: string;
-  image: string;
-}
-
-interface Subcategory {
-  _id: string;
-  name: string;
-  slug: string;
-  category: string;
-}
-
-interface ICategory {
-  _id: string;
-  name: string;
-  slug: string;
-  image: string;
-  createdAt: string;
-  updatedAt: string;
-}
 @Component({
   selector: 'app-home',
   imports: [
+    RouterLink,
     MainsliderComponent,
     AddbuttonComponent,
     SliderComponent,
@@ -68,9 +53,13 @@ interface ICategory {
 })
 export class HomeComponent implements OnInit {
   productData: WritableSignal<IProduct[]> = signal<IProduct[]>([]);
+<<<<<<< HEAD
   allProducts: IProduct[] = []
   filteredProducts: IProduct[] = []
   categoryData: WritableSignal<ICategory[]> = signal<ICategory[]>([]);
+=======
+  categoryData: WritableSignal<ICategories[]> = signal<ICategories[]>([]);
+>>>>>>> 3c2a5b76d2cba68bd59707de6a47caeebdcd6fca
   private readonly homeService = inject(HomeService);
   private readonly categoryService = inject(CategoryService);
   private readonly SearchService = inject(SearchService);

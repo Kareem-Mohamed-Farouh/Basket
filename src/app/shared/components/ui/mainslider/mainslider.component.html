@@ -1,14 +1,11 @@
 @if (isBrowser()) {
   <swiper-container
   [attr.slides-per-view]="slidesPerView()"
-  speed="500"
+  speed="400"
   loop="true"
   autoplay="true"
   mousewheel="true"
-  style="
-    --swiper-navigation-color: #000000;
-    --swiper-navigation-pressed-color: #000000;
-  "
+  style="--swiper-navigation-color: #000000"
   mousewheel-force-to-axis="true"
   navigation="true"
   class="xl:mx-[15rem] mx-4 my-5"
