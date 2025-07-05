@@ -139,7 +139,6 @@ export class ShopComponent implements OnInit {
   addToCart(id: string): void {
     this.cartService.addToCart(id).subscribe({
       next: (res) => {
-        // this.toaster.success(res.message);
         this.notyfService.success(res.message);
         this.cartService.cartNumber.set(res.numOfCartItems);
       },

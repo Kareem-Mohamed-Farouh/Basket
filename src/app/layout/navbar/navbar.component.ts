@@ -1,6 +1,6 @@
 import { CartService } from './../../core/services/cartSer/cart.service';
 import { Component, computed, inject, OnInit, PLATFORM_ID, Signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { SearchService } from '../../core/services/searchSer/search.service';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -12,6 +12,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
   private readonly cartService=inject(CartService)
+  private readonly router = inject(Router)
   private readonly platformID =inject(PLATFORM_ID)
   countCart:Signal<number> = computed(()=>  
   this.cartService.cartNumber() )
@@ -33,5 +34,13 @@ export class NavbarComponent implements OnInit {
  onSearchChange(event: Event) {
   const value = (event.target as HTMLInputElement).value;
   this.searchService.updateSearchTerm(value);
+}
+
+logOut(){
+  localStorage.removeItem('token')
+  this.router.navigate(['/login']);
+  
+
+
 }
 }

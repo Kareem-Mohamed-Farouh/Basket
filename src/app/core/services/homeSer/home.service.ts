@@ -27,6 +27,11 @@ export class HomeService {
     return this.http.get(`${baseUrl}/api/v1/products?limit=2&page=${page}`);
   }
 
+  // لعرض اوردارات العميل
+   getAllOrders():Observable<any>
+  {
+    return this.http.get(`${baseUrl}/api/v1/orders/`)
+  }
 
 
 }

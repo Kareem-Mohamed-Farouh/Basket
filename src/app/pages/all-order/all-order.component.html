@@ -1,0 +1,14 @@
+
+
+@for (item of allOrder(); track $index) {
+<div class="py-12">
+      <div class="shadow-lg px-4 py-8 w-[90%] mx-auto flex justify-evenly">
+      <p class="text-lg font-semibold"><span class="text-red-600">name</span> : {{item.user.name}}</p>
+      <p class="text-lg font-semibold"><span class="text-green-600">totalOrderPrice : </span> :{{item.totalOrderPrice}}</p>
+      <p class="text-lg font-semibold"><span class="text-blue-600">Date  </span> :{{item.createdAt | date }}</p>
+      <p class="text-lg font-semibold"><span class="text-gray-600">payment  </span> :{{item.paymentMethodType}}</p>
+  </div>
+</div>
+    
+   
+}

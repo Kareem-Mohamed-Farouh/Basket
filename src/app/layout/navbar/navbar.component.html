@@ -41,50 +41,78 @@
     </div>
 
     <div class="flex items-center md:border-s-2 md:border-gray-100 md:ps-2">
-      <button
-        id="dropdownNavbarLink"
-        data-dropdown-toggle="dropdownNavbar"
-        class="flex items-center w-full gap-2 py-2 text-gray-900"
-      >
-        English
-        <svg
-          class="w-2.5 h-2.5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 4 4 4-4"
-          />
-        </svg>
-      </button>
-      <button
-        id="dropdownNavbarLink"
-        data-dropdown-toggle="dropdownNavbar"
-        class="flex items-center w-full gap-2 py-2 px-3 text-gray-900"
-      >
-        USD
-        <svg
-          class="w-2.5 h-2.5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 4 4 4-4"
-          />
-        </svg>
-      </button>
+     <!-- زر اختيار اللغة -->
+<button
+  id="dropdownLanguageBtn"
+  data-dropdown-toggle="dropdownLanguage"
+  class="flex items-center w-full gap-2 py-2 text-gray-900"
+>
+  English
+  <svg
+    class="w-2.5 h-2.5"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 10 6"
+  >
+    <path
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="m1 1 4 4 4-4"
+    />
+  </svg>
+</button>
+
+<!-- زر اختيار العملة -->
+<button
+  id="dropdownCurrencyBtn"
+  data-dropdown-toggle="dropdownCurrency"
+  class="flex items-center w-full gap-2 py-2 px-3 text-gray-900"
+>
+  USD
+  <svg
+    class="w-2.5 h-2.5"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 10 6"
+  >
+    <path
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="m1 1 4 4 4-4"
+    />
+  </svg>
+</button>
+
+<!-- Dropdown الخاص باللغة -->
+<div
+  id="dropdownLanguage"
+  class="hidden z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
+>
+  <ul class="py-2 text-sm text-gray-700">
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">English</a></li>
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Arabic</a></li>
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">French</a></li>
+  </ul>
+</div>
+
+<!-- Dropdown الخاص بالعملة -->
+<div
+  id="dropdownCurrency"
+  class="hidden z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
+>
+  <ul class="py-2 text-sm text-gray-700">
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">USD</a></li>
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">EUR</a></li>
+    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">EGP</a></li>
+  </ul>
+</div>
+
     </div>
   </div>
 </nav>
@@ -103,7 +131,7 @@
       >Search</label
     >
     <div class="relative">
-      <input
+      <input (input)="onSearchChange($event)"
         type="search"
         id="default-search"
         class="w-full max-sm:py-2 md:py-4 ring-main-color ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
@@ -133,7 +161,7 @@
   </form>
 
   <div class="desktop-links">
-    <div class="person flex justify-between items-center">
+    <div class="person flex justify-between gap-5 items-center">
       <div class="flex items-center gap-4">
         <div routerLink="/login" class="icon cursor-pointer">
           <img src="/imgs/lll.svg" alt="" />
@@ -143,16 +171,17 @@
 
         <div routerLink="/cart" class="relative cursor-pointer cart">
           <a class="block py-2 px-3 text-red-700">
-            <i class="fas fa-cart-shopping"></i>
+             <img src="/imgs/cart.png" alt="" />
           </a>
           <span
             class="inline-flex items-center rounded-md bg-[#EA2B0F] px-2 py-1 text-xs font-medium text-white ring-1 ring-green-600/20 ring-inset absolute top-0 left-8"
             >{{ countCart() }}</span
           >
         </div>
+        <i (click)="logOut()" class="fa-solid fa-arrow-right-from-bracket cursor-pointer text-xl"></i>
       </div>
     </div>
-    <div class="relative cart">
+    <!-- <div class="relative cart">
       <a class="block py-2 px-3 text-red-700">
         <img src="/imgs/cart.png" alt="" />
       </a>
@@ -160,7 +189,7 @@
         class="inline-flex items-center rounded-full bg-[#EA2B0F] h-6 w-6 flex justify-center items-center text-xs font-medium text-white absolute top-0 left-8"
         >0</span
       >
-    </div>
+    </div> -->
   </div>
 </nav>
 
@@ -267,6 +296,14 @@
           routerLinkActive="text-[#35AFA0]      rounded bg-[#F0FAFF]"
           class="block flex gap-1 items-center py-2 px-3 rounded-sm hover:text-[#35AFA0] transition-all hover:duration-300 hover:bg-[#F0FAFF] rounded"
           ><img src="/imgs/bekary.png" alt="meaticon" /> Bakery</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/allOrder"
+          routerLinkActive="text-[#35AFA0]      rounded bg-[#F0FAFF]"
+          class="block flex gap-1 items-center py-2 px-3 rounded-sm hover:text-[#35AFA0] transition-all hover:duration-300 hover:bg-[#F0FAFF] rounded"
+          ><i class="fas fa-truck  text-xl"></i> All order</a
         >
       </li>
       <li>
