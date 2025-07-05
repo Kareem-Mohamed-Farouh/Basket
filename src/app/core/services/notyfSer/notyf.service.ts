@@ -7,25 +7,18 @@ import 'notyf/notyf.min.css'; // مهم جدًا عشان التحريك وال�
   providedIn: 'root',
 })
 export class NotyfService {
+  private PlatformID = inject(PLATFORM_ID);
+  private notyf: Notyf | null = null;
 
- private PlatformID = inject(PLATFORM_ID)
- private notyf: Notyf | null = null;
-
-
-  constructor(){
+  constructor() {
     if (isPlatformBrowser(this.PlatformID)) {
-       this.notyf = new Notyf({
-      duration: 3000,
-      position: { x: 'right', y: 'top' }
-    });
+      this.notyf = new Notyf({
+        duration: 3000,
+        position: { x: 'right', y: 'top' },
+      });
     }
-
   }
 
-
-
-
-  
   success(message: string) {
     this.notyf?.success(message);
   }
