@@ -85,33 +85,32 @@
 
           <hr class="my-6 border-gray-300" />
 
-          <div class="mt-6 flex flex-wrap gap-4">
+          <div class="mt-6 flex justify-between mb-2 gap-4">
             <button
               type="button"
               (click)="addProductToWishlist(detailData._id)"
-              class="px-4 py-3 w-[45%] border border-red-500 bg-red-600 rounded-lg duration-500 text-white max-sm:text-sm font-semibold"
+              class="cursor-pointer px-4 py-3 w-[45%] border border-red-500 bg-red-600 rounded-lg duration-500 text-white max-sm:text-sm font-semibold"
             >
               Add to wishlist <i class="fa-regular text-white fa-heart"></i>
             </button>
             <button
               type="button"
               (click)="addItemToCart(detailData._id)"
-              class="px-4 py-3 w-[45%] border border-main-color bg-main-color rounded-lg duration-500 hover:bg-main-color text-white max-sm:text-sm font-semibold"
+              class="cursor-pointer px-4 py-3 w-[45%] border border-main-color bg-main-color rounded-lg duration-500 hover:bg-main-color text-white max-sm:text-sm font-semibold"
             >
               <i class="fa-solid fa-cart-shopping"></i> Add to cart
             </button>
+          </div>
+          <div class="flex flex-wrap text-center">
+            @for (item of detailData.images; track $index) {
 
-            <div class="flex flex-wrap text-center">
-              @for (item of detailData.images; track $index) {
+            <img
+              [src]="item"
+              alt="Product1"
+              class="border m-1 max-sm:w-1/4 sm:w-1/2 md:w-2/12 cursor-pointer"
+            />
 
-              <img
-                [src]="item"
-                alt="Product1"
-                class="border m-1 max-sm:w-1/4 sm:w-1/2 md:w-2/12 cursor-pointer"
-              />
-
-              }
-            </div>
+            }
           </div>
 
           <hr class="my-6 border-gray-300" />
