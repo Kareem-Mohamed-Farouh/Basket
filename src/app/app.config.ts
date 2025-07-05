@@ -1,4 +1,7 @@
-import { provideAnimations } from '@angular/platform-browser/animations';
+
+
+
+
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -20,6 +23,7 @@ import {
 } from '@angular/common/http';
 import { headerInterceptor } from './shared/interceptors/header/header.interceptor';
 import { loadingInterceptor } from './shared/interceptors/loading/loading.interceptor';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
