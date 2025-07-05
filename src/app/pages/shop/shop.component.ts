@@ -76,13 +76,14 @@ import { IProduct } from '../../shared/interfaces/iproduct';
 import { ICart } from '../../shared/interfaces/icart';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SearchService } from '../../core/services/searchSer/search.service';
+import { AddbuttonComponent } from '../../shared/components/ui/addbutton/addbutton.component';
 
 @Component({
   selector: 'app-shop',
 
   standalone: true,
 
-  imports: [],
+  imports: [RouterLink, AddbuttonComponent],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss',
 })
