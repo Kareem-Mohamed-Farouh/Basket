@@ -1,5 +1,5 @@
 @if (isBrowser()) {
-  <swiper-container
+<swiper-container
   [attr.slides-per-view]="slidesPerView()"
   speed="400"
   loop="true"
@@ -15,7 +15,10 @@
     <div
       class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-100 border border-gray-100"
     >
-      <div class="card-img-top relative cursor-pointer">
+      <div
+        [routerLink]="['/details', product._id]"
+        class="card-img-top relative cursor-pointer"
+      >
         <img
           [src]="product.imageCover"
           class="w-full h-[13.75rem] object-contain"
@@ -57,7 +60,10 @@
             >$ {{ product.price }}
           </span>
         </div>
-        <app-addbutton label="add to cart"></app-addbutton>
+        <app-addbutton
+          (click)="addItemToCart(product._id)"
+          label="add to cart"
+        ></app-addbutton>
       </div>
     </div>
   </swiper-slide>

@@ -14,10 +14,13 @@ import {
 import { HomeService } from '../../../../core/services/homeSer/home.service';
 import { AddbuttonComponent } from '../addbutton/addbutton.component';
 import { IProduct } from '../../../interfaces/iproduct';
+import { CartService } from '../../../../core/services/cartSer/cart.service';
+import { NotyfService } from '../../../../core/services/notyfSer/notyf.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-mainslider',
-  imports: [AddbuttonComponent],
+  imports: [AddbuttonComponent, RouterLink],
   templateUrl: './mainslider.component.html',
   styleUrl: './mainslider.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -29,6 +32,8 @@ export class MainsliderComponent implements OnInit, AfterViewInit {
   productData: WritableSignal<IProduct[]> = signal<IProduct[]>([]);
   private readonly homeService = inject(HomeService);
   private readonly pLATFORM_ID = inject(PLATFORM_ID);
+  private readonly notyfService = inject(NotyfService);
+  private readonly cartService = inject(CartService);
 
   ngOnInit() {
     this.getHomeProduct();
@@ -45,9 +50,19 @@ export class MainsliderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.pLATFORM_ID)) {
-      this.isBrowser.set(true)
+      this.isBrowser.set(true);
       this.getScreenWidth();
     }
+  }
+
+  addItemToCart(productId: string) {
+    this.cartService.addToCart(productId).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.notyfService.success(res.message);
+        this.cartService.cartNumber.set(res.numOfCartItems);
+      },
+    });
   }
 
   @HostListener('window:resize')

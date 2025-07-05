@@ -8,28 +8,30 @@ import { isPlatformBrowser } from '@angular/common';
   selector: 'app-navbar',
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements OnInit {
+
   private readonly cartService=inject(CartService)
   private readonly router = inject(Router)
   private readonly platformID =inject(PLATFORM_ID)
   countCart:Signal<number> = computed(()=>  
   this.cartService.cartNumber() )
-  constructor(private searchService: SearchService) {}
+
+constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformID)) {
-        if (localStorage.getItem('token')) {
-          this.cartService.getCartItems().subscribe({
-         next:(res)=>{
-        this.cartService.cartNumber.set(res.numOfCartItems)
+      if (localStorage.getItem('token')) {
+        this.cartService.getCartItems().subscribe({
+          next: (res) => {
+            this.cartService.cartNumber.set(res.numOfCartItems);
+          },
+        });
       }
-     })
     }
-    }
-  
   }
+
 
  onSearchChange(event: Event) {
   const value = (event.target as HTMLInputElement).value;
@@ -43,4 +45,5 @@ logOut(){
 
 
 }
+
 }

@@ -4,10 +4,11 @@ import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css'; // مهم جدًا عشان التحريك والشكل
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NotyfService {
-  private PlatformID = inject(PLATFORM_ID)
+
+ private PlatformID = inject(PLATFORM_ID)
  private notyf: Notyf | null = null;
 
 
@@ -21,6 +22,10 @@ export class NotyfService {
 
   }
 
+
+
+
+  
   success(message: string) {
     this.notyf?.success(message);
   }
@@ -37,6 +42,3 @@ export class NotyfService {
     this.notyf?.open({ type: 'warning', message });
   }
 }
-
-
-

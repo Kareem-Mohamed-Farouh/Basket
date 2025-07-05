@@ -1,3 +1,4 @@
+
 <p class="bg-main-color text-white text-center text-sm max-sm:text-xs py-1">
   Due to current circumstances, there may be slight delays in order processing
 </p>
@@ -16,11 +17,17 @@
         <li>
           <a routerLink="/aboutus" class="block rounded-sm">About Us</a>
         </li>
-        <li>
+        <li class="cursor-pointer">
           <a class="block rounded-sm">Compare</a>
         </li>
-        <li>
-          <a class="block rounded-sm">Wishlist</a>
+        <li
+          class="cursor-pointer"
+          routerLink="/wishlist"
+          routerLinkActive="text-[#35AFA0]     rounded bg-[#F0FAFF]"
+        >
+          <a class="block rounded-sm"
+            >Wishlist <i class="fa-solid fa-heart fa-beat-fade"></i
+          ></a>
         </li>
       </ul>
     </div>
@@ -169,27 +176,21 @@
 
         <span>$0.00</span>
 
-        <div routerLink="/cart" class="relative cursor-pointer cart">
+        <div routerLink="/cart" class="relative cart">
           <a class="block py-2 px-3 text-red-700">
              <img src="/imgs/cart.png" alt="" />
           </a>
           <span
-            class="inline-flex items-center rounded-md bg-[#EA2B0F] px-2 py-1 text-xs font-medium text-white ring-1 ring-green-600/20 ring-inset absolute top-0 left-8"
+            class="inline-flex items-center rounded-full bg-[#EA2B0F] h-6 w-6 flex justify-center items-center text-xs font-medium text-white absolute top-0 left-8"
             >{{ countCart() }}</span
           >
         </div>
         <i (click)="logOut()" class="fa-solid fa-arrow-right-from-bracket cursor-pointer text-xl"></i>
       </div>
     </div>
-    <!-- <div class="relative cart">
-      <a class="block py-2 px-3 text-red-700">
-        <img src="/imgs/cart.png" alt="" />
-      </a>
-      <span
-        class="inline-flex items-center rounded-full bg-[#EA2B0F] h-6 w-6 flex justify-center items-center text-xs font-medium text-white absolute top-0 left-8"
-        >0</span
-      >
-    </div> -->
+
+
+
   </div>
 </nav>
 
@@ -333,3 +334,4 @@
     </ul>
   </div>
 </nav>
+

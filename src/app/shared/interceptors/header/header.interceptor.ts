@@ -3,20 +3,17 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { inject, PLATFORM_ID } from '@angular/core';
 
 export const headerInterceptor: HttpInterceptorFn = (req, next) => {
- 
   let platform = inject(PLATFORM_ID);
 
- 
-if (isPlatformBrowser(platform)) {
-  if (localStorage.getItem('token')) {
-   let userHeader:any = {token:localStorage.getItem('token')}
+  if (isPlatformBrowser(platform)) {
+    if (localStorage.getItem('basketToken')) {
+      let userHeader: any = { token: localStorage.getItem('basketToken') };
 
- 
- req = req.clone({
-  setHeaders :userHeader
-})
+      req = req.clone({
+        setHeaders: userHeader,
+      });
+    }
   }
-}
 
   return next(req);
 };
