@@ -1,5 +1,5 @@
 import { NavbarComponent } from './layout/navbar/navbar.component';
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './layout/footer/footer.component';
 
@@ -11,6 +11,8 @@ import { ShopComponent } from './pages/shop/shop.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { NgxSpinnerComponent } from 'ngx-spinner';
+import { AuthenService } from './core/services/auth/authen.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -27,4 +29,5 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
 })
 export class AppComponent {
   title = 'eBasket';
+
 }
