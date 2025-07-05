@@ -6,7 +6,9 @@ import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
+
   imports: [RouterLink, RouterLinkActive],
+
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
