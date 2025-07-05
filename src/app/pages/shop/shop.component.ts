@@ -82,7 +82,7 @@ import { SearchService } from '../../core/services/searchSer/search.service';
 
   standalone: true,
 
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss',
 })
