@@ -133,7 +133,7 @@
       ></div>
     </div>
   </div>
-  <div class="col-span-3 grid max-sm:grid-cols-2 sm:grid-cols-3 md-cols-3">
+  <div class="col-span-3 grid max-sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2">
     @for (product of productData().slice(15, 21); track $index) {
     <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
       <div
@@ -176,34 +176,34 @@
             />
           </svg>
           }
-          <span class="text-sm ms-2 text-gray-500 font-semibold"
+          <span class="text-xs ms-2 text-gray-500 font-semibold"
             >{{ product.ratingsQuantity }} review</span
           >
         </div>
-        <div class="discount flex items-center gap-2 my-2 relative">
-          <span class="text-gray-400 text-sm font-semibold line-through"
+        <div class="discount text-xs flex items-center gap-2 my-2 relative">
+          <span class="text-gray-400 font-semibold line-through"
             >$ {{ product.price * 1.25 }}</span
           >
-          <span class="text-red-600 text-xl font-semibold"
+          <span class="text-red-600 text-lg font-semibold"
             >$ {{ product.price }}
           </span>
 
           <div class="flex items-center justify-between">
             <i
               (click)="addProductToWishList(product._id)"
-              class="absolute bottom-0 end-0 z-20 cursor-pointer text-lg text-red-600 fa-regular fa-heart"
+              class="absolute bottom-2 end-0 z-20 cursor-pointer text-lg text-red-600 fa-regular fa-heart"
             ></i>
             @if(wishData !== null){ @for (data of wishData; track $index) { @if(
             data._id == product._id ){
 
             <i
               (click)="removProductFromWishlist(product._id)"
-              class="absolute bottom-0 end-0 z-[21] cursor-pointer text-lg text-red-600 fa-solid fa-heart"
+              class="absolute bottom-2 end-0 z-[21] cursor-pointer text-lg text-red-600 fa-solid fa-heart"
             ></i>
             } @if(data._id !== product._id){
             <i
               (click)="addProductToWishList(product._id)"
-              class="absolute bottom-0 end-0 z-20 cursor-pointer text-lg text-red-600 fa-regular fa-heart"
+              class="absolute bottom-2 end-0 z-20 cursor-pointer text-lg text-red-600 fa-regular fa-heart"
             ></i>
             } } }
 

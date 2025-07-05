@@ -1,4 +1,3 @@
-
 <p class="bg-main-color text-white text-center text-sm max-sm:text-xs py-1">
   Due to current circumstances, there may be slight delays in order processing
 </p>
@@ -48,78 +47,83 @@
     </div>
 
     <div class="flex items-center md:border-s-2 md:border-gray-100 md:ps-2">
-     <!-- زر اختيار اللغة -->
-<button
-  id="dropdownLanguageBtn"
-  data-dropdown-toggle="dropdownLanguage"
-  class="flex items-center w-full gap-2 py-2 text-gray-900"
->
-  English
-  <svg
-    class="w-2.5 h-2.5"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 10 6"
-  >
-    <path
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="m1 1 4 4 4-4"
-    />
-  </svg>
-</button>
+      <!-- زر اختيار اللغة -->
+      <button
+        id="dropdownLanguageBtn"
+        data-dropdown-toggle="dropdownLanguage"
+        class="flex items-center w-full gap-2 py-2 text-gray-900"
+      >
+        English
+        <svg
+          class="w-2.5 h-2.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
 
-<!-- زر اختيار العملة -->
-<button
-  id="dropdownCurrencyBtn"
-  data-dropdown-toggle="dropdownCurrency"
-  class="flex items-center w-full gap-2 py-2 px-3 text-gray-900"
->
-  USD
-  <svg
-    class="w-2.5 h-2.5"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 10 6"
-  >
-    <path
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="m1 1 4 4 4-4"
-    />
-  </svg>
-</button>
+      <!-- زر اختيار العملة -->
+      <button
+        id="dropdownCurrencyBtn"
+        data-dropdown-toggle="dropdownCurrency"
+        class="flex items-center w-full gap-2 py-2 px-3 text-gray-900"
+      >
+        USD
+        <svg
+          class="w-2.5 h-2.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
 
-<!-- Dropdown الخاص باللغة -->
-<div
-  id="dropdownLanguage"
-  class="hidden z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
->
-  <ul class="py-2 text-sm text-gray-700">
-    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">English</a></li>
-    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Arabic</a></li>
-    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">French</a></li>
-  </ul>
-</div>
+      <!-- Dropdown الخاص باللغة -->
+      <div
+        id="dropdownLanguage"
+        class="hidden z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
+      >
+        <ul class="py-2 text-sm text-gray-700">
+          <li>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">English</a>
+          </li>
+          <li>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Arabic</a>
+          </li>
+          <li>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">French</a>
+          </li>
+        </ul>
+      </div>
 
-<!-- Dropdown الخاص بالعملة -->
-<div
-  id="dropdownCurrency"
-  class="hidden z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
->
-  <ul class="py-2 text-sm text-gray-700">
-    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">USD</a></li>
-    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">EUR</a></li>
-    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">EGP</a></li>
-  </ul>
-</div>
-
+      <!-- Dropdown الخاص بالعملة -->
+      <div
+        id="dropdownCurrency"
+        class="hidden z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
+      >
+        <ul class="py-2 text-sm text-gray-700">
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">USD</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">EUR</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">EGP</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
@@ -138,7 +142,8 @@
       >Search</label
     >
     <div class="relative">
-      <input (input)="onSearchChange($event)"
+      <input
+        (input)="onSearchChange($event)"
         type="search"
         id="default-search"
         class="w-full max-sm:py-2 md:py-4 ring-main-color ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
@@ -178,19 +183,19 @@
 
         <div routerLink="/cart" class="relative cart">
           <a class="block py-2 px-3 text-red-700">
-             <img src="/imgs/cart.png" alt="" />
+            <img src="/imgs/cart.png" alt="" />
           </a>
           <span
             class="inline-flex items-center rounded-full bg-[#EA2B0F] h-6 w-6 flex justify-center items-center text-xs font-medium text-white absolute top-0 left-8"
             >{{ countCart() }}</span
           >
         </div>
-        <i (click)="logOut()" class="fa-solid fa-arrow-right-from-bracket cursor-pointer text-xl"></i>
+        <i
+          (click)="logOut()"
+          class="fa-solid fa-arrow-right-from-bracket cursor-pointer text-xl"
+        ></i>
       </div>
     </div>
-
-
-
   </div>
 </nav>
 
@@ -202,7 +207,7 @@
     type="button"
     aria-controls="navbar-default"
     aria-expanded="false"
-    class="btn inline-flex flex items-center justify-between gap-5 py-2 px-3 text-gray-900 md:p-0 md:w-auto focus:ring-main-color"
+    class="btn text-xs inline-flex flex items-center justify-between gap-5 py-2 px-3 text-gray-900 md:p-0 md:w-auto focus:ring-main-color"
   >
     <i class="fa-solid fa-bars"></i>ALL CATEGORIES
     <svg
@@ -265,7 +270,7 @@
   </button>
   <div class="hidden md:block md:w-auto text-gray-700" id="navbar-default">
     <ul
-      class="flex md:text-sm uppercase flex-col items-center flex-end max-sm:absolute top-[200px] start-0 end-0 z-[50] font-medium max-sm:p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x- rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white"
+      class="flex text-xs uppercase flex-col items-center flex-end max-sm:absolute top-[200px] start-0 end-0 z-[50] font-medium max-sm:p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x- md:flex-row md:mt-0 md:border-0 md:bg-white"
     >
       <li class="">
         <a
@@ -304,7 +309,7 @@
           routerLink="/allOrder"
           routerLinkActive="text-[#35AFA0]      rounded bg-[#F0FAFF]"
           class="block flex gap-1 items-center py-2 px-3 rounded-sm hover:text-[#35AFA0] transition-all hover:duration-300 hover:bg-[#F0FAFF] rounded"
-          ><i class="fas fa-truck  text-xl"></i> All order</a
+          ><i class="fas fa-truck text-xl"></i> All order</a
         >
       </li>
       <li>
@@ -334,4 +339,3 @@
     </ul>
   </div>
 </nav>
-
