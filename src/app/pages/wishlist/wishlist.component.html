@@ -77,9 +77,7 @@
                   class="max-sm:text-sm flex items-center gap-1 text-main-color md:text-lg font-bold"
                 >
                   <span> Price </span>
-                  <span class="ms-1">
-                    {{ item.priceAfterDiscount ?? item.price | currency }}</span
-                  >
+                  <span class="ms-1"> {{ item.priceAfterDiscount }}</span>
 
                   <span class="line-through text-sm text-gray-500">{{
                     item.price | currency

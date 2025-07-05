@@ -71,7 +71,10 @@
     </div>
     <p class="text-sm text-muted my-3">Remains until the end of the offer</p>
     @for (product of productData().slice(39, 40); track $index) {
-    <div class="card p-3 flex flex-col gap-[1.25rem]">
+    <div
+      class="card p-3 flex flex-col gap-[1.25rem] cursor-pointer"
+      [routerLink]="['/details', product._id]"
+    >
       <div class="card-img-top relative">
         <img
           [src]="product.imageCover"
@@ -133,7 +136,15 @@
   <div class="col-span-3 grid max-sm:grid-cols-2 sm:grid-cols-3 md-cols-3">
     @for (product of productData().slice(15, 21); track $index) {
     <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
-      <div class="card-img-top relative">
+      <div
+        class="card-img-top group relative cursor-pointer"
+        [routerLink]="['/details', product._id]"
+      >
+        <div
+          class="absolute flex justify-end items-start top-0 end-0 opacity-0 group-hover:opacity-100 duration-400 transition-all bottom-0 z-[200]"
+        >
+          <img src="/imgs/eye.gif" class="size-10 mx-auto" alt="view" />
+        </div>
         <img
           [src]="product.imageCover"
           class="w-full h-auto object-cover"
@@ -165,15 +176,41 @@
             />
           </svg>
           }
-          <span class="text-sm text-gray-500 font-semibold">1 review</span>
+          <span class="text-sm ms-2 text-gray-500 font-semibold"
+            >{{ product.ratingsQuantity }} review</span
+          >
         </div>
-        <div class="discount flex items-center gap-2 my-2">
+        <div class="discount flex items-center gap-2 my-2 relative">
           <span class="text-gray-400 text-sm font-semibold line-through"
             >$ {{ product.price * 1.25 }}</span
           >
           <span class="text-red-600 text-xl font-semibold"
             >$ {{ product.price }}
           </span>
+
+          <div class="flex items-center justify-between">
+            <i
+              (click)="addProductToWishList(product._id)"
+              class="absolute bottom-0 end-0 z-20 cursor-pointer text-lg text-red-600 fa-regular fa-heart"
+            ></i>
+            @if(wishData !== null){ @for (data of wishData; track $index) { @if(
+            data._id == product._id ){
+
+            <i
+              (click)="removProductFromWishlist(product._id)"
+              class="absolute bottom-0 end-0 z-[21] cursor-pointer text-lg text-red-600 fa-solid fa-heart"
+            ></i>
+            } @if(data._id !== product._id){
+            <i
+              (click)="addProductToWishList(product._id)"
+              class="absolute bottom-0 end-0 z-20 cursor-pointer text-lg text-red-600 fa-regular fa-heart"
+            ></i>
+            } } }
+
+            <!-- 
+                    <i appChangerheart (dblclick)="removProductFromWishlist(prod._id)" (click)="(add(prod._id) )"
+                        class="cursor-pointer text-lg  text-red-600  fa-regular fa-heart"></i> -->
+          </div>
         </div>
       </div>
     </div>
@@ -192,7 +229,7 @@
     <div
       class="text-card absolute top-0 left-0 w-full h-full flex flex-col justify-center items-start p-[40px] gap-1 text-white text-center"
     >
-      <h4 class="text-[#FF6048] uppercase text-sm font-semibold">
+      <h4 class="text-[#FF6048]uppercase text-sm font-semibold">
         Weekend Discount 40%
       </h4>
       <h3 class="text-left text-lg font-bold text-[#3E445A]">
@@ -201,7 +238,7 @@
       <p class="text-xs font-semibold text-gray-400 mb-3">Eat one every day.</p>
 
       <button
-        class="text-sm capitalize cursor-pointer bg-[#233A95] text-white px-4 py-1 rounded-full"
+        class="text-sm capitalize cursor-pointer hover:bg-blue-800 bg-[#233A95] text-white px-4 py-1 rounded-full"
       >
         shop now
       </button>
@@ -224,7 +261,7 @@
       <p class="text-xs font-semibold text-gray-400 mb-3">Eat one every day.</p>
 
       <button
-        class="text-sm capitalize cursor-pointer bg-[#ED174A] text-white px-4 py-1 rounded-full"
+        class="text-sm capitalize cursor-pointer hover:bg-red-600 bg-[#ED174A] text-white px-4 py-1 rounded-full"
       >
         shop now
       </button>
@@ -233,9 +270,9 @@
 </div>
 
 <div
-  class="lg:px-[5rem] xl:px-[15rem] px-4 my-8 flex items-center justify-between"
+  class="lg:px-[5rem] xl:px-[15rem] bg-white px-4 my-8 flex items-center justify-between"
 >
-  <div>
+  <div class="">
     <h3 class="uppercase text-lg font-bold">Best Sellers</h3>
     <p>Do not miss the current offers until the end of March.</p>
   </div>
@@ -272,9 +309,9 @@
         class="layer absolute w-full flex flex-col items-center justify-center top-0 opacity-0 group-hover:opacity-100 duration-400 transition-all bottom-0 z-[200]"
       >
         <span
-          class="flex gap-2 items-center text-xs uppercase text-white p-2 bg-main-color my-2 font-semibold rounded-md"
+          class="flex gap-2 items-center text-xs bg-white uppercase p-2 text-main-color my-2 font-semibold rounded-md"
           >view DETAILS
-          <img src="/imgs/eye.png" class="size-6 mx-auto" alt="view" />
+          <img src="/imgs/eye.gif" class="size-6 mx-auto" alt="view" />
         </span>
       </div>
       <img

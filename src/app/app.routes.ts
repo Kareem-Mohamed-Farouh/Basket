@@ -11,6 +11,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { urlGuard } from './core/guards/guardUrl/url.guard';
+import { AllOrderComponent } from './pages/all-order/all-order.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 export const routes: Routes = [
@@ -34,6 +35,58 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent, title: 'contact' },
   { path: 'aboutus', component: AboutUsComponent, title: 'aboutus' },
   { path: 'wishlist', component: WishlistComponent, title: 'Wishlist' },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [urlGuard],
+    title: 'home',
+  },
+  {
+    path: 'shop',
+    component: ShopComponent,
+    canActivate: [urlGuard],
+    title: 'shop',
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [urlGuard],
+    title: 'cart',
+  },
+  {
+    path: 'allOrder',
+    component: AllOrderComponent,
+    canActivate: [urlGuard],
+    title: 'All Order',
+  },
+  {
+    path: 'purchaseorder',
+    component: PurchaseOrderComponent,
+    canActivate: [urlGuard],
+    title: 'purchaseorder',
+  },
+  {
+    path: 'blog',
+    component: BlogComponent,
+    canActivate: [urlGuard],
+    title: 'blog',
+  },
+  { path: 'register', component: RegisterComponent, title: 'Register' },
+  { path: 'login', component: LoginComponent, title: 'Login' },
+  {
+    path: 'contact',
+    component: ContactComponent,
+    canActivate: [urlGuard],
+    title: 'contact',
+  },
+  { path: 'aboutus', component: AboutUsComponent, title: 'aboutus' },
+  {
+    path: 'chackout',
+    component: ChackoutComponent,
+    canActivate: [urlGuard],
+    title: 'chackout',
+  },
+  { path: '**', component: NotfoundComponent, title: 'notfound' },
 
   {
     path: 'details/:detailsId',

@@ -8,4 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class AddbuttonComponent {
   @Input() label: string = 'Add';
+
+  
 }

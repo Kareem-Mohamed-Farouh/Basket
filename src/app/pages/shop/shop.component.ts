@@ -76,13 +76,14 @@ import { IProduct } from '../../shared/interfaces/iproduct';
 import { ICart } from '../../shared/interfaces/icart';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SearchService } from '../../core/services/searchSer/search.service';
+import { AddbuttonComponent } from '../../shared/components/ui/addbutton/addbutton.component';
 
 @Component({
   selector: 'app-shop',
 
   standalone: true,
 
-  imports: [RouterLink],
+  imports: [RouterLink, AddbuttonComponent],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss',
 })
@@ -139,7 +140,6 @@ export class ShopComponent implements OnInit {
   addToCart(id: string): void {
     this.cartService.addToCart(id).subscribe({
       next: (res) => {
-        // this.toaster.success(res.message);
         this.notyfService.success(res.message);
         this.cartService.cartNumber.set(res.numOfCartItems);
       },

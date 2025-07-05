@@ -23,43 +23,11 @@ td {
   color: #000;
 }
 
-.content {
-position: absolute;
-right: 20%;
-top: 150px;
-
-transform: translate(-50%, -50%);
-}
-
-.content h3 {
-  font-size: 24px;
-  font-weight: 200;
-  color: rgb(32, 36, 53);
-}
-
-.content h2 {
-  font-size: 30px;
-  font-weight: 600;
-  color: rgb(32, 36, 53);
-}
-
-.content h2 span {
-  color: rgb(0, 184, 83);
-}
-
-.content p {
-  font-size: 12px;
-  font-weight: 400;
-  color: rgb(155, 155, 180);
-}
-
 .starts span {
   color: rgb(155, 155, 180);
   font-weight: 600;
   font-size: 13px;
 }
-
-
 
 .card-body h3 {
   color: rgb(32, 36, 53);
@@ -87,56 +55,47 @@ transform: translate(-50%, -50%);
 .bttom .btn2 {
   border-radius: 0 50% 50% 0;
 }
-.price{
-  background-color:  rgba(247, 248, 253, 1) ;
+.price {
+  background-color: rgba(247, 248, 253, 1);
 }
 
-
-.price h5{
+.price h5 {
   color: rgba(155, 155, 180, 1) !important;
   font-size: 12px;
   font-weight: 400;
 }
 
-
-.price p{
+.price p {
   color: rgba(155, 155, 180, 1) !important;
-  font-size: 12px; 
+  font-size: 12px;
   font-weight: 500;
 }
 
-.price p span{
+.price p span {
   color: rgba(32, 36, 53, 1) !important;
   font-size: 13px;
   font-weight: 500;
 }
 
-
-
-
-.picture img{
+.picture img {
   border: 1px solid rgb(53, 175, 160);
 
-  border-radius: 0.75rem ;
+  border-radius: 0.75rem;
 }
-
-
 
 .middle img {
-  border: 1px solid rgba(231, 236, 240, 1) ;
- border-radius: 0.75rem ;
- max-height: 600px;
- 
+  border: 1px solid rgba(231, 236, 240, 1);
+  border-radius: 0.75rem;
+  max-height: 600px;
 }
 
-.role span{
+.role span {
   font-size: 15px;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.7);
 }
 
-
-.stop h2{
+.stop h2 {
   font-size: 24px;
   font-weight: 500;
   color: rgba(0, 0, 0, 1);
@@ -154,16 +113,15 @@ transform: translate(-50%, -50%);
   border: 2px soild #f5f6f8;
 }
 
-.share button{
+.share button {
   border: 1px soild rgba(222, 229, 234, 1) !important;
 }
 
-
-.footer span{
+.footer span {
   color: rgba(53, 175, 160, 1);
 }
 
-.footer h5{
+.footer h5 {
   font-size: 16px;
   font-weight: 600;
   color: rgba(0, 0, 0, 1);
