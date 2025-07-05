@@ -14,35 +14,88 @@ import { urlGuard } from './core/guards/guardUrl/url.guard';
 import { AllOrderComponent } from './pages/all-order/all-order.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
-
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, title: 'home' },
   { path: 'shop', component: ShopComponent, title: 'shop' },
-  { path: 'cart', component: CartComponent, canActivate: [urlGuard], title: 'cart', },
-  { path: 'purchaseorder', component: PurchaseOrderComponent, title: 'purchaseorder', },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [urlGuard],
+    title: 'cart',
+  },
+  {
+    path: 'purchaseorder',
+    component: PurchaseOrderComponent,
+    title: 'purchaseorder',
+  },
   { path: 'blog', component: BlogComponent, title: 'blog' },
   { path: 'register', component: RegisterComponent, title: 'Register' },
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'contact', component: ContactComponent, title: 'contact' },
   { path: 'aboutus', component: AboutUsComponent, title: 'aboutus' },
   { path: 'wishlist', component: WishlistComponent, title: 'Wishlist' },
-  {path: 'home', component: HomeComponent , canActivate:[urlGuard] ,title: 'home'},
-  {path: 'shop', component: ShopComponent , canActivate:[urlGuard] ,title: 'shop'},
-  {path: 'cart', component: CartComponent , canActivate:[urlGuard] ,title: 'cart'},
-   {path: 'allOrder', component: AllOrderComponent , canActivate:[urlGuard] ,title: 'All Order'},
-    {path: 'purchaseorder', component: PurchaseOrderComponent , canActivate:[urlGuard] ,title: 'purchaseorder'},
-    {path: 'blog', component: BlogComponent , canActivate:[urlGuard] ,title: 'blog'},
-    {path: 'register', component: RegisterComponent  ,title: 'Register'},
-    {path: 'login', component: LoginComponent  ,title: 'Login'},
-    {path: 'contact', component: ContactComponent , canActivate:[urlGuard] ,title: 'contact'},
-    {path: 'aboutus', component: AboutUsComponent ,title: 'aboutus'},
-    {path: 'chackout', component: ChackoutComponent  , canActivate:[urlGuard] ,title: 'chackout'},
-    {path: '**', component: NotfoundComponent ,title: 'notfound'},
-    
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [urlGuard],
+    title: 'home',
+  },
+  {
+    path: 'shop',
+    component: ShopComponent,
+    canActivate: [urlGuard],
+    title: 'shop',
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [urlGuard],
+    title: 'cart',
+  },
+  {
+    path: 'allOrder',
+    component: AllOrderComponent,
+    canActivate: [urlGuard],
+    title: 'All Order',
+  },
+  {
+    path: 'purchaseorder',
+    component: PurchaseOrderComponent,
+    canActivate: [urlGuard],
+    title: 'purchaseorder',
+  },
+  {
+    path: 'blog',
+    component: BlogComponent,
+    canActivate: [urlGuard],
+    title: 'blog',
+  },
+  { path: 'register', component: RegisterComponent, title: 'Register' },
+  { path: 'login', component: LoginComponent, title: 'Login' },
+  {
+    path: 'contact',
+    component: ContactComponent,
+    canActivate: [urlGuard],
+    title: 'contact',
+  },
+  { path: 'aboutus', component: AboutUsComponent, title: 'aboutus' },
+  {
+    path: 'chackout',
+    component: ChackoutComponent,
+    canActivate: [urlGuard],
+    title: 'chackout',
+  },
+  { path: '**', component: NotfoundComponent, title: 'notfound' },
 
-  { path: 'details/:detailsId', loadComponent: () =>   import('./pages/details/details.component').then(   (c) => c.DetailsComponent), title: 'details',},
-
+  {
+    path: 'details/:detailsId',
+    loadComponent: () =>
+      import('./pages/details/details.component').then(
+        (c) => c.DetailsComponent
+      ),
+    title: 'details',
+  },
 
   {
     path: 'chackout',
