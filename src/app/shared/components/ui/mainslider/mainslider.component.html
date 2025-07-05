@@ -1,29 +1,28 @@
+@if (isBrowser()) {
 <swiper-container
-  slides-per-view="5"
-  speed="500"
+  [attr.slides-per-view]="slidesPerView()"
+  speed="400"
   loop="true"
+  autoplay="true"
   mousewheel="true"
-  style="
-    --swiper-navigation-color: #000000;
-    --swiper-navigation-pressed-color: #000000;
-    --swiper-navigation-size: 25px;
-    --swiper-pagination-color: #000000;
-    --swiper-pagination-bullet-inactive-color: #ff0000;
-    --swiper-pagination-bullet-inactive-opacity: 0.7;
-    --swiper-pagination-bullet-size: 10px;
-    --swiper-pagination-bullet-horizontal-gap: 8px;
-  "
+  style="--swiper-navigation-color: #000000"
   mousewheel-force-to-axis="true"
   navigation="true"
-  class="lg:mx-[20rem] my-20 my-5"
+  class="xl:mx-[15rem] mx-4 my-5"
 >
+  @for (product of productData(); track $index) {
   <swiper-slide>
-    <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
-      <div class="card-img-top relative">
+    <div
+      class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-100 border border-gray-100"
+    >
+      <div
+        [routerLink]="['/details', product._id]"
+        class="card-img-top relative cursor-pointer"
+      >
         <img
-          src="/imgs/p5.png"
-          class="w-full h-auto object-cover"
-          alt="home-banner"
+          [src]="product.imageCover"
+          class="w-full h-[13.75rem] object-contain"
+          [alt]="product.title"
         />
         <span
           class="absolute top-0 left-0 bg-main-color text-white text-xs font-bold px-3 py-1 rounded"
@@ -33,13 +32,13 @@
       </div>
       <div class="card-body">
         <p class="card-text font-semibold text-sm line-clamp-2">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {{ product.description }}
         </p>
-        <span class="text-stock-color font-semibold uppercase text-xs"
-          >in stock</span
-        >
-        <div class="star-review flex items-center gap-2 my-2">
+        <span class="text-stock-color font-semibold uppercase text-xs">{{
+          product.quantity + " In stock"
+        }}</span>
+        <div class="star-review flex items-center my-2">
+          @for (star of [1,2,3,4,5]; track $index) {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -50,285 +49,25 @@
               d="M10 15.27l-5.18 2.73 1-5.82L1 7.24l6-.87L10 1l3 5.37 6 .87-4.82 4.94 1 5.82L10 15.27z"
             />
           </svg>
+          }
           <span class="text-sm text-gray-500 font-semibold">1 review</span>
         </div>
         <div class="discount flex items-center gap-2 my-2">
           <span class="text-gray-400 text-sm font-semibold line-through"
-            >$100.0</span
+            >$ {{ product.price * 1.25 }}</span
           >
-          <span class="text-red-600 text-xl font-semibold">$85.0</span>
+          <span class="text-red-600 text-xl font-semibold"
+            >$ {{ product.price }}
+          </span>
         </div>
-        <app-addbutton label="add to cart"></app-addbutton>
+        <app-addbutton
+          (click)="addItemToCart(product._id)"
+          label="add to cart"
+        ></app-addbutton>
       </div>
     </div>
   </swiper-slide>
-  <swiper-slide>
-    <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
-      <div class="card-img-top relative">
-        <img
-          src="/imgs/p4.png"
-          class="w-full h-auto object-cover"
-          alt="home-banner"
-        />
-        <span
-          class="absolute top-0 left-0 bg-main-color text-white text-xs font-bold px-3 py-1 rounded"
-        >
-          15%
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="card-text font-semibold text-sm line-clamp-2">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <span class="text-stock-color font-semibold uppercase text-xs"
-          >in stock</span
-        >
-        <div class="star-review flex items-center gap-2 my-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            class="w-4 h-4 text-addbtn-color"
-          >
-            <path
-              d="M10 15.27l-5.18 2.73 1-5.82L1 7.24l6-.87L10 1l3 5.37 6 .87-4.82 4.94 1 5.82L10 15.27z"
-            />
-          </svg>
-          <span class="text-sm text-gray-500 font-semibold">1 review</span>
-        </div>
-        <div class="discount flex items-center gap-2 my-2">
-          <span class="text-gray-400 text-sm font-semibold line-through"
-            >$100.0</span
-          >
-          <span class="text-red-600 text-xl font-semibold">$85.0</span>
-        </div>
-        <app-addbutton label="add to cart"></app-addbutton>
-      </div>
-    </div>
-  </swiper-slide>
-  <swiper-slide>
-    <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
-      <div class="card-img-top relative">
-        <img
-          src="/imgs/product-image.jpg.png"
-          class="w-full h-auto object-cover"
-          alt="home-banner"
-        />
-        <span
-          class="absolute top-0 left-0 bg-main-color text-white text-xs font-bold px-3 py-1 rounded"
-        >
-          15%
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="card-text font-semibold text-sm line-clamp-2">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <span class="text-stock-color font-semibold uppercase text-xs"
-          >in stock</span
-        >
-        <div class="star-review flex items-center gap-2 my-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            class="w-4 h-4 text-addbtn-color"
-          >
-            <path
-              d="M10 15.27l-5.18 2.73 1-5.82L1 7.24l6-.87L10 1l3 5.37 6 .87-4.82 4.94 1 5.82L10 15.27z"
-            />
-          </svg>
-          <span class="text-sm text-gray-500 font-semibold">1 review</span>
-        </div>
-        <div class="discount flex items-center gap-2 my-2">
-          <span class="text-gray-400 text-sm font-semibold line-through"
-            >$100.0</span
-          >
-          <span class="text-red-600 text-xl font-semibold">$85.0</span>
-        </div>
-        <app-addbutton label="add to cart"></app-addbutton>
-      </div>
-    </div>
-  </swiper-slide>
-  <swiper-slide>
-    <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
-      <div class="card-img-top relative">
-        <img
-          src="/imgs/p5.png"
-          class="w-full h-auto object-cover"
-          alt="home-banner"
-        />
-        <span
-          class="absolute top-0 left-0 bg-main-color text-white text-xs font-bold px-3 py-1 rounded"
-        >
-          15%
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="card-text font-semibold text-sm line-clamp-2">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <span class="text-stock-color font-semibold uppercase text-xs"
-          >in stock</span
-        >
-        <div class="star-review flex items-center gap-2 my-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            class="w-4 h-4 text-addbtn-color"
-          >
-            <path
-              d="M10 15.27l-5.18 2.73 1-5.82L1 7.24l6-.87L10 1l3 5.37 6 .87-4.82 4.94 1 5.82L10 15.27z"
-            />
-          </svg>
-          <span class="text-sm text-gray-500 font-semibold">1 review</span>
-        </div>
-        <div class="discount flex items-center gap-2 my-2">
-          <span class="text-gray-400 text-sm font-semibold line-through"
-            >$100.0</span
-          >
-          <span class="text-red-600 text-xl font-semibold">$85.0</span>
-        </div>
-        <app-addbutton label="add to cart"></app-addbutton>
-      </div>
-    </div>
-  </swiper-slide>
-  <swiper-slide>
-    <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
-      <div class="card-img-top relative">
-        <img
-          src="/imgs/product-image.jpg.png"
-          class="w-full h-auto object-cover"
-          alt="home-banner"
-        />
-        <span
-          class="absolute top-0 left-0 bg-main-color text-white text-xs font-bold px-3 py-1 rounded"
-        >
-          15%
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="card-text font-semibold text-sm line-clamp-2">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <span class="text-stock-color font-semibold uppercase text-xs"
-          >in stock</span
-        >
-        <div class="star-review flex items-center gap-2 my-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            class="w-4 h-4 text-addbtn-color"
-          >
-            <path
-              d="M10 15.27l-5.18 2.73 1-5.82L1 7.24l6-.87L10 1l3 5.37 6 .87-4.82 4.94 1 5.82L10 15.27z"
-            />
-          </svg>
-          <span class="text-sm text-gray-500 font-semibold">1 review</span>
-        </div>
-        <div class="discount flex items-center gap-2 my-2">
-          <span class="text-gray-400 text-sm font-semibold line-through"
-            >$100.0</span
-          >
-          <span class="text-red-600 text-xl font-semibold">$85.0</span>
-        </div>
-        <app-addbutton label="add to cart"></app-addbutton>
-      </div>
-    </div>
-  </swiper-slide>
-  <swiper-slide>
-    <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
-      <div class="card-img-top relative">
-        <img
-          src="/imgs/product-image.jpg.png"
-          class="w-full h-auto object-cover"
-          alt="home-banner"
-        />
-        <span
-          class="absolute top-0 left-0 bg-main-color text-white text-xs font-bold px-3 py-1 rounded"
-        >
-          15%
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="card-text font-semibold text-sm line-clamp-2">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <span class="text-stock-color font-semibold uppercase text-xs"
-          >in stock</span
-        >
-        <div class="star-review flex items-center gap-2 my-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            class="w-4 h-4 text-addbtn-color"
-          >
-            <path
-              d="M10 15.27l-5.18 2.73 1-5.82L1 7.24l6-.87L10 1l3 5.37 6 .87-4.82 4.94 1 5.82L10 15.27z"
-            />
-          </svg>
-          <span class="text-sm text-gray-500 font-semibold">1 review</span>
-        </div>
-        <div class="discount flex items-center gap-2 my-2">
-          <span class="text-gray-400 text-sm font-semibold line-through"
-            >$100.0</span
-          >
-          <span class="text-red-600 text-xl font-semibold">$85.0</span>
-        </div>
-        <app-addbutton label="add to cart"></app-addbutton>
-      </div>
-    </div>
-  </swiper-slide>
-  <swiper-slide>
-    <div class="card p-3 flex flex-col gap-[1.25rem] shadow shadow-gray-300">
-      <div class="card-img-top relative">
-        <img
-          src="/imgs/product-image.jpg.png"
-          class="w-full h-auto object-cover"
-          alt="home-banner"
-        />
-        <span
-          class="absolute top-0 left-0 bg-main-color text-white text-xs font-bold px-3 py-1 rounded"
-        >
-          15%
-        </span>
-      </div>
-      <div class="card-body">
-        <p class="card-text font-semibold line-clamp-2 text-sm">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <span class="text-stock-color font-semibold uppercase text-xs"
-          >in stock</span
-        >
-        <div class="star-review flex items-center gap-2 my-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            class="w-4 h-4 text-addbtn-color"
-          >
-            <path
-              d="M10 15.27l-5.18 2.73 1-5.82L1 7.24l6-.87L10 1l3 5.37 6 .87-4.82 4.94 1 5.82L10 15.27z"
-            />
-          </svg>
-          <span class="text-sm text-gray-500 font-semibold">1 review</span>
-        </div>
-        <div class="discount flex items-center gap-2 my-2">
-          <span class="text-gray-400 text-sm font-semibold line-through"
-            >$100.0</span
-          >
-          <span class="text-red-600 text-xl font-semibold">$85.0</span>
-        </div>
-        <app-addbutton label="add to cart"></app-addbutton>
-      </div></div
-  ></swiper-slide>
+
+  }
 </swiper-container>
+}

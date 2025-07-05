@@ -1,59 +1,37 @@
-.head{
-    text-align: center;
-    background-color: rgba(53, 175, 160, 1);
-    color: #fff;
+
+.head {
+  text-align: center;
+  background-color: rgb(53, 175, 160);
+  color: #fff;
 }
 
-.icon{
-    width: 40px;
-    height: 40px;
-    border-radius: 21px;
-    border: 1px solid #E2E4EC;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 21px;
+  border: 1px solid #e2e4ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.cart{
-    width: 40px;
-    height: 40px;
-    border-radius: 21px;
-    background-color: #FFF1EE;
-    
+.cart {
+  width: 40px;
+  height: 40px;
+  border-radius: 21px;
+  background-color: #fff1ee;
 }
 
-
-.btn{
-    background-color: rgba(53, 175, 160, 1);
-    border-radius: 50px;
-    padding: 15px;
-    color: #fff;
-
+.btn {
+  background-color: rgb(53, 175, 160);
+  border-radius: 50px;
+  padding: 15px;
+  color: #fff;
 }
-
 
 .right a {
-    display: block;
-    font-weight: 400;
-    font-size: 12px;
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
 }
 
-.two span{
-    color: rgba(53, 175, 160, 1) ;
-}
-
-.drop{
-    font-size: 12px;
-    font-weight: 500;
-   
-}
-
-.one p {
-    font-size: 12px;
-    font-weight: 400;
-}
-
-.two p {
-        font-size: 12px;
-    font-weight: 400;
-}
