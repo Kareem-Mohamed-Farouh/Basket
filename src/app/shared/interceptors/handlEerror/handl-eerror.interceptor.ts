@@ -14,8 +14,6 @@ export const handlEerrorInterceptor: HttpInterceptorFn = (req, next) => {
         'You are not logged in. Please login to get access'
       ) {
         notyfService.warning(err.error.message);
-      } else if (localStorage.getItem('basketToken') === undefined) {
-        notyfService.warning('oky');
       }
       return throwError(() => {
         return err;
