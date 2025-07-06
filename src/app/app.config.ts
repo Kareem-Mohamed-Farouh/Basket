@@ -1,7 +1,3 @@
-
-
-
-
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -24,6 +20,7 @@ import {
 import { headerInterceptor } from './shared/interceptors/header/header.interceptor';
 import { loadingInterceptor } from './shared/interceptors/loading/loading.interceptor';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { handlEerrorInterceptor } from './shared/interceptors/handlEerror/handl-eerror.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -35,7 +32,11 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideHttpClient(
       withFetch(),
-      withInterceptors([headerInterceptor, loadingInterceptor])
+      withInterceptors([
+        headerInterceptor,
+        loadingInterceptor,
+        handlEerrorInterceptor,
+      ])
     ),
     provideAnimations(),
     importProvidersFrom(NgxSpinnerModule),
