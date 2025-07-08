@@ -4,7 +4,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 @import "flowbite/src/themes/default";
-@plugin "flowbite/plugin";
 
 @theme {
   --color-main-color: rgba(53, 175, 160, 1);
