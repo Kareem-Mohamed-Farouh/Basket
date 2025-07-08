@@ -7,7 +7,11 @@ module.exports = {
     theme: {
         extend: {
 
-
+            colors: {
+                main: 'rgba(53, 175, 160, 1)',
+                stock: '#00b853',
+                addbtn: '#ffcd00',
+            }
 
 
 
