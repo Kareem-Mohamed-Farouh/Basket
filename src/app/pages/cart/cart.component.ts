@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
      if (isPlatformBrowser(this.platformID)) {
- if (localStorage.getItem('token')) {
+ if (localStorage.getItem('basketToken')) {
     this.getCartData()
     }
      }

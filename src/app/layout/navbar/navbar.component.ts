@@ -39,7 +39,7 @@ constructor(private searchService: SearchService) {}
 }
 
 logOut(){
-  localStorage.removeItem('token')
+  localStorage.removeItem('basketToken')
   this.router.navigate(['/login']);
   
 

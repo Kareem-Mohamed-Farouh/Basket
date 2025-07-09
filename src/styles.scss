@@ -3,6 +3,9 @@
 @import url("https://fonts.googleais.com/css2?family=inter:wght@300..900&display=swap");
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "flowbite/src/themes/default";
 
 @theme {
