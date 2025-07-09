@@ -1,18 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap");
-
 @import url("https://fonts.googleais.com/css2?family=inter:wght@300..900&display=swap");
 /* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@import "flowbite/src/themes/default";
 
-@theme {
-  --color-main-color: rgba(53, 175, 160, 1);
-  --color-stock-color: #00b853;
-  --color-addbtn-color: #ffcd00;
-}
+@import "flowbite/src/themes/default";
 
 @layer components {
   .btn {
