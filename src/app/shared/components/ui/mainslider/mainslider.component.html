@@ -34,16 +34,17 @@
         <p class="card-text font-semibold text-sm line-clamp-2">
           {{ product.description }}
         </p>
-        <span class="text-stock-color font-semibold uppercase text-xs">{{
-          product.quantity + " In stock"
-        }}</span>
+        <span
+          class="text-[rgba(53, 175, 160, 1)] font-semibold uppercase text-xs"
+          >{{ product.quantity + " In stock" }}</span
+        >
         <div class="star-review flex items-center my-2">
           @for (star of [1,2,3,4,5]; track $index) {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 20 20"
-            class="w-4 h-4 text-addbtn-color"
+            class="w-4 h-4 text-[#ffcd00]"
           >
             <path
               d="M10 15.27l-5.18 2.73 1-5.82L1 7.24l6-.87L10 1l3 5.37 6 .87-4.82 4.94 1 5.82L10 15.27z"
