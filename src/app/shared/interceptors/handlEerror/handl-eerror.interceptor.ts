@@ -10,8 +10,7 @@ export const handlEerrorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((err) => {
       if (
-        err.error.message !==
-        'You are not logged in. Please login to get access'
+        err.error.message == 'You are not logged in. Please login to get access'
       ) {
         notyfService.warning(err.error.message);
       }

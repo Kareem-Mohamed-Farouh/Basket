@@ -32,7 +32,11 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideHttpClient(
       withFetch(),
-      withInterceptors([headerInterceptor, loadingInterceptor])
+      withInterceptors([
+        headerInterceptor,
+        loadingInterceptor,
+        handlEerrorInterceptor,
+      ])
     ),
     provideAnimations(),
     importProvidersFrom(NgxSpinnerModule),
